@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Can Wales Live with Fire?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="scroll">
+      <div class="scroll-graphic">
+        <div class="image-container">
+          <img id="img-1" src="images/march_19.png" alt="March 19 Image" />
+          <img id="img-2" src="images/april_5.png" alt="April 5 Image" />
+          <img id="img-3" src="images/may_15.png" alt="May 15 Image" />
+        </div>
+      </div>
+
+      <div class="scroll-text">
+        <div class="step" data-step="1">
+          <p>This was what Wales looked like from space on <span style="text-decoration: underline;">March 19th 2025</span>.</p>
+        </div>
+        <div class="step" data-step="2">
+          <p>
+            There were atleast 3 fires ravaging the landscape on this day. This
+            fire in mid Wales went on to burn 100 ha.
+          </p>
+        </div>
+        <div class="step" data-step="3">
+          <p>
+            This fire in north Wales near Wrexham burned for at least 2 days.
+          </p>
+        </div>
+        <div class="step" data-step="4">
+          <p>
+            March saw the start of a string of wildfires across the country that
+            went on month after month.
+          </p>
+        </div>
+        <div class="step" data-step="5">
+          <p>
+            April was the worst month on record for wildfires. This rare,
+            cloudless view of Wales on April 5th shows how dry the landscape had
+            become.
+          </p>
+        </div>
+        <div class="step" data-step="6">
+          <p>
+            This is where one of the largest fires took place. Ystard Fur saw
+            more than 1000ha burnt.
+          </p>
+        </div>
+        <div class="step" data-step="7">
+          <p>
+            More than a month later, burn scars are still visible. 
+          </p>
+        </div>
+        <div class="step" data-step="8">
+          <p>
+            What Wales has seen this year is unprecedented.
+          </p>
+        </div>
+        <div class="step" data-step="9">
+          <p> And the future is not looking bright.</p>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script>
+      //scrollama setupp
+      const scroller = scrollama();
+
+      function addCircle(step) {
+  d3.selectAll(".zoom-circle").remove();
+  
+  const container = d3.select(".image-container");
+  let circleData;
+  
+  // circle highlights 
+  switch (step) {
+    case 1:
+      circleData = { cx: "13.7%", cy: "47%", r: 10, color: "pink" };
+      break;
+    case 2:
+      circleData = { cx: "15.5%", cy: "21%", r: 10, color: "pink" };
+      break;
+    default:
+      return;
+  }
+  let svg = container.select("svg.circle-overlay");
+  if (svg.empty()) {
+    svg = container.append("svg")
+      .attr("class", "circle-overlay")
+      .style("position", "absolute")
+      .style("top", "0")
+      .style("left", "0")
+      .style("width", "100%")
+      .style("height", "100%")
+      .style("pointer-events", "none")
+      .style("z-index", "10");
+  }
+
+  svg.append("circle")
+    .attr("class", "zoom-circle")
+    .attr("cx", circleData.cx)
+    .attr("cy", circleData.cy)
+    .attr("r", 0)
+    .style("fill", "solid")
+    .attr("fill", circleData.color)
+    .attr("fill-opacity", 0.1)
+    .style("stroke", circleData.color)
+    .style("stroke-width", "0.5px")
+    .style("opacity", 0.1)
+    .transition()
+    .duration(500)
+    .attr("r", circleData.r)
+    .style("opacity", 1);
+}
+
+// rectangle highlights 
+function addRectHighlight(step) {
+  d3.selectAll(".zoom-highlight").remove();
+  
+  const container = d3.select(".image-container");
+  let rectData;
+  
+  switch (step) {
+    case 5:
+      rectData = { x: "80.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
+      break;
+    case 6:
+      rectData = { x: "145.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
+      break;
+    default:
+      return;
+  }
+  let svg = container.select("svg.highlight-overlay");
+  if (svg.empty()) {
+    svg = container.append("svg")
+      .attr("class", "highlight-overlay")
+      .style("position", "absolute")
+      .style("top", "0")
+      .style("left", "0")
+      .style("width", "100%")
+      .style("height", "100%")
+      .style("pointer-events", "none")
+      .attr("overflow", "visible")
+      .style("z-index", "10");
+  }
+  svg.append("rect")
+    .attr("class", "zoom-highlight")
+    .attr("x", rectData.x)
+    .attr("y", rectData.y)
+    .attr("width", "0%")
+    .attr("height", "0%")
+    .style("fill", "solid")
+    .attr("fill", rectData.color)
+    .attr("fill-opacity", 0.1)
+    .style("stroke", rectData.color)
+    .style("stroke-width", "0.5px")
+    .style("opacity", 0)
+    .transition()
+    .duration(800)
+    .attr("width", rectData.width)
+    .attr("height", rectData.height)
+    .style("opacity", 1);
+}
+// zooming in 
+      function zoom(step) {
+        const image = d3.select(".image-container");
+
+        let transform;
+        switch (step) {
+          case 0:
+            transform = "scale(1) translate(0px, 0px)"; //march 19
+            break;
+          case 1:
+            transform = "scale(4.5) translate(390px, 25px)";
+            break;
+          case 2:
+            transform = "scale(4.5) translate(360px, 160px)";
+            break;
+          case 3:
+            transform = "scale(1) translate(0px, 0px)";
+            break;
+          case 4:
+            transform = "scale(1) translate(-1000px, 0px)"; //april 5
+            break;
+          case 5:
+            transform = "scale(5.6) translate(-580px, -20px)";
+            break;
+          case 6:
+            transform = "scale(5.6) translate(-1535.5px, -20px)";
+            break;
+          case 7:
+            transform = "scale(1) translate(-2000px, 0px)";// may 15
+            break;
+          case 8:
+            transform = "scale(0.5) translate(-2000px, 0px)"; 
+            break;
+          default:
+            transform = "scale(1) translate(0px, 0px)";
+        }
+        image.style("transform", transform);
+
+
+setTimeout(() => {
+    addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
+  }, 2500);
+
+  setTimeout(() => {
+    addRectHighlight(step); // Use addCircle, addPulsingCircle, or addRectHighlight
+  }, 2500);
+      }
+
+      function init() {
+        const steps = d3.selectAll(".step");
+
+        scroller
+          .setup({
+            step: ".step",
+            offset: 0.5,
+            debug: false,
+          })
+          .onStepEnter((response) => {
+            steps.classed("is-active", (d, i) => i === response.index);
+            zoom(response.index);
+          });
+
+        window.addEventListener("resize", scroller.resize);
+      }
+
+      // kick it off
+      init();
+    </script>
+  </body>
+</html>
