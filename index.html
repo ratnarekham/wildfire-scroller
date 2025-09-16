@@ -18,7 +18,7 @@
 
       <div class="scroll-text">
         <div class="step" data-step="1">
-          <p>This was what Wales looked like from space on <span style="text-decoration: underline;">March 19th 2025</span>.</p>
+          <p>This was what Wales looked like from space on <span style="background-color: rgb(218, 248, 140);">March 19th 2025</span>.</p>
         </div>
         <div class="step" data-step="2">
           <p>
@@ -39,8 +39,9 @@
         </div>
         <div class="step" data-step="5">
           <p>
-            April was the worst month on record for wildfires. This rare,
-            cloudless view of Wales on April 5th shows how dry the landscape had
+            April was the worst month on record for wildfires. <br> 
+            <br> This rare,
+            cloudless view of Wales on <span style="background-color: rgb(248, 140, 234);">April 5th</span> shows how dry the landscape had
             become.
           </p>
         </div>
@@ -52,7 +53,7 @@
         </div>
         <div class="step" data-step="7">
           <p>
-            More than a month later, burn scars are still visible. 
+            On <span style="background-color: rgb(153, 140, 248);">May 15th</span>, more than a month later, burn scars are still visible. 
           </p>
         </div>
         <div class="step" data-step="8">
@@ -127,10 +128,10 @@ function addRectHighlight(step) {
   
   switch (step) {
     case 5:
-      rectData = { x: "80.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
+      rectData = { x: "65.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
       break;
     case 6:
-      rectData = { x: "145.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
+      rectData = { x: "115.3%", y: "51.5%", width: "2%", height: "6%", color: "pink" };
       break;
     default:
       return;
@@ -176,28 +177,28 @@ function addRectHighlight(step) {
             transform = "scale(1) translate(0px, 0px)"; //march 19
             break;
           case 1:
-            transform = "scale(4.5) translate(390px, 25px)";
+            transform = "scale(5.6) translate(415px, 25px)";
             break;
           case 2:
-            transform = "scale(4.5) translate(360px, 160px)";
+            transform = "scale(5.6) translate(390px, 160px)";
             break;
           case 3:
             transform = "scale(1) translate(0px, 0px)";
             break;
           case 4:
-            transform = "scale(1) translate(-1000px, 0px)"; //april 5
+            transform = "scale(1) translate(-800px, 0px)"; //april 5
             break;
           case 5:
-            transform = "scale(5.6) translate(-580px, -20px)";
+            transform = "scale(5.6) translate(-355px, -20px)";
             break;
           case 6:
-            transform = "scale(5.6) translate(-1535.5px, -20px)";
+            transform = "scale(5.6) translate(-1085px, -20px)";
             break;
           case 7:
-            transform = "scale(1) translate(-2000px, 0px)";// may 15
+            transform = "scale(1) translate(-1500px, 0px)";// may 15
             break;
           case 8:
-            transform = "scale(0.5) translate(-2000px, 0px)"; 
+            transform = "scale(0.5) translate(-1700px, 0px)"; 
             break;
           default:
             transform = "scale(1) translate(0px, 0px)";
@@ -234,5 +235,10 @@ setTimeout(() => {
       // kick it off
       init();
     </script>
+
+    <div class="main-article">
+      <div class="headline"> Can Wales live with fires? </div>
+      <div class="para"> Wildfires are written into the law of nature. Acting as natural regulators of ecosystems, they even helped evolve pine trees to become as we know them today. However, recent wildfires have become unrecognizable from the ones in the past. According to multiple reports, wildfires are now larger, more furious, and are getting increasingly difficult to control. What changed?</div>
+    </div>
   </body>
 </html>

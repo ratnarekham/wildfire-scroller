@@ -18,7 +18,7 @@ body {
 
 .image-container {
   display: flex;
-  gap: 500px;
+  gap: 280px;
   justify-content: left;
   align-items: center;
   left: 50%;
@@ -53,21 +53,40 @@ body {
   margin: 0 auto;
   z-index: 5;
   pointer-events: none;
+  bottom: 42vh;
 }
 
 #scroll::after {
   content: "";
   display: block;
-  height: 30vh;
+  height: 10vh;
 }
 
 .step {
   padding: 1rem;
-  margin-bottom: 80vh;
   margin-right: 20vh;
+  margin-bottom: 70vh;
   opacity: 1;
   transition: transform 0.6s ease, transform-origin 0.6s ease;
   text-align: left;
   font-size: 17px;
   background-color: rgba(255, 255, 255, 0.622);
+}
+
+.headline {
+  font-size: 4rem;
+  text-align: center;
+  font-weight: 500;
+  padding: 20px;
+}
+
+.main-article {
+  margin-left: 22%;
+  margin-right: 22%;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.para {
+  padding: 20px;
 }
