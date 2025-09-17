@@ -18,56 +18,60 @@
 
       <div class="scroll-text">
         <div class="step" data-step="1">
-          <p>This was what Wales looked like from space on <span style="background-color: rgb(218, 248, 140);">March 19th 2025</span>.</p>
+          <p>2025 has brought Wales its most extreme wildfire season on record.<br> <br> But just how bad has it been? <br> 
+          </p>
+        </div>
+        <div class="step" data-step="1">
+        <p>
+            On <span style="background-color: rgb(218, 248, 140);">March 19</span> satellites captured this view of Wales from space.<br> <br> That day, fires were burning in atleast 19 different locations. <br> <br> Two of them emitted smoke visible from space. </p>
         </div>
         <div class="step" data-step="2">
           <p>
-            There were atleast 3 fires ravaging the landscape on this day. This
-            fire in mid Wales went on to burn 100 ha.
+            Near the seaside town of Aberystwyth, a fire that had started the day before was still burning.
           </p>
         </div>
         <div class="step" data-step="3">
           <p>
-            This fire in north Wales near Wrexham burned for at least 2 days.
+            In the small village of Llanfairtalhaiarn, smoke stretched for miles across the countryside.
           </p>
         </div>
         <div class="step" data-step="4">
           <p>
-            March saw the start of a string of wildfires across the country that
-            went on month after month.
+            By the end of March, Wales had lost more land to fire than all the other UK nations combined. <br>
+            <br> Around 4,700 hectares, almost the size of Cardiff, had burned in just one month. <br>
+            <br> And, this was only the beginning.
           </p>
         </div>
         <div class="step" data-step="5">
           <p>
-            April was the worst month on record for wildfires. <br> 
-            <br> This rare,
-            cloudless view of Wales on <span style="background-color: rgb(248, 140, 234);">April 5th</span> shows how dry the landscape had
-            become.
+            April turned out to be the worst month on record for land burned.<br> 
+            <br> On a rare, cloudless day <span style="background-color: rgb(248, 140, 234);">April 5th</span>, satellites recorded fires in atleast four different places around Wales.
           </p>
         </div>
         <div class="step" data-step="6">
           <p>
-            This is where one of the largest fires took place. Ystard Fur saw
-            more than 1000ha burnt.
+            One of the largest UK wildfires this year broke out in Ystard Fflur, burning for three days. As of April 8, the cause remains unknown.
           </p>
         </div>
         <div class="step" data-step="7">
           <p>
-            On <span style="background-color: rgb(153, 140, 248);">May 15th</span>, more than a month later, burn scars are still visible. 
+            More than a month later, on <span style="background-color: rgb(153, 140, 248);">May 15th</span>, the scars of those fires were still clearly visible from space. 
           </p>
         </div>
         <div class="step" data-step="8">
           <p>
-            What Wales has seen this year is unprecedented.
+            What Wales experienced in 2025 was unprecedented. <br> <br> The UK as a whole recorded its highest burnt area since recording began in 2012.
           </p>
         </div>
         <div class="step" data-step="9">
-          <p> And the future is not looking bright.</p>
+          <p>What does this mean for the future of Wales?</p>
       </div>
     </section>
 
-    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
+    <script src="scripts/totalburnedarea.js"></script>
+    <script src="scripts/burnarea2025.js"></script>
     <script>
       //scrollama setupp
       const scroller = scrollama();
@@ -80,10 +84,10 @@
   
   // circle highlights 
   switch (step) {
-    case 1:
+    case 2:
       circleData = { cx: "13.7%", cy: "47%", r: 10, color: "pink" };
       break;
-    case 2:
+    case 3:
       circleData = { cx: "15.5%", cy: "21%", r: 10, color: "pink" };
       break;
     default:
@@ -127,10 +131,13 @@ function addRectHighlight(step) {
   let rectData;
   
   switch (step) {
-    case 5:
+    // case 3:
+    //   rectData = { x: "17%", y: "75%", width: "2%", height: "5%", color: "pink" };
+    //   break;
+    case 6:
       rectData = { x: "65.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
       break;
-    case 6:
+    case 7:
       rectData = { x: "115.3%", y: "51.5%", width: "2%", height: "6%", color: "pink" };
       break;
     default:
@@ -177,27 +184,30 @@ function addRectHighlight(step) {
             transform = "scale(1) translate(0px, 0px)"; //march 19
             break;
           case 1:
-            transform = "scale(5.6) translate(415px, 25px)";
+            transform = "scale(1.5) translate(230px, 0px)"; //march 19
             break;
           case 2:
-            transform = "scale(5.6) translate(390px, 160px)";
+            transform = "scale(5.6) translate(415px, 25px)";
             break;
           case 3:
-            transform = "scale(1) translate(0px, 0px)";
+            transform = "scale(5.6) translate(390px, 160px)";
             break;
           case 4:
-            transform = "scale(1) translate(-800px, 0px)"; //april 5
+            transform = "scale(1.5) translate(230px, 0px)";
             break;
           case 5:
-            transform = "scale(5.6) translate(-355px, -20px)";
+            transform = "scale(1.5) translate(-550px, 0px)"; //april 5
             break;
           case 6:
-            transform = "scale(5.6) translate(-1085px, -20px)";
+            transform = "scale(5.6) translate(-355px, -20px)";
             break;
           case 7:
-            transform = "scale(1) translate(-1500px, 0px)";// may 15
+            transform = "scale(5.6) translate(-1085px, -20px)";
             break;
           case 8:
+            transform = "scale(1.5) translate(-1250px, 0px)";// may 15
+            break;
+          case 9:
             transform = "scale(0.5) translate(-1700px, 0px)"; 
             break;
           default:
@@ -237,8 +247,56 @@ setTimeout(() => {
     </script>
 
     <div class="main-article">
-      <div class="headline"> Can Wales live with fires? </div>
-      <div class="para"> Wildfires are written into the law of nature. Acting as natural regulators of ecosystems, they even helped evolve pine trees to become as we know them today. However, recent wildfires have become unrecognizable from the ones in the past. According to multiple reports, wildfires are now larger, more furious, and are getting increasingly difficult to control. What changed?</div>
+      <div class="headline"> Counting the flames behind Wales' Wildfires </div>
+      <div class="para"> Wildfires are no strangers in Wales. From pine trees to bracken, they have shaped the landscape and the ecosystems as we know them today. But this year's fires looked nothing like those of the past. <br> 
+        <br> They were larger, faster and harder to control than anything seen in recent memory. The scale of the crisis this year raises an urgent question - what changed? <br>
+      <br> Douglas I Kelley, wildfire scientist at the UK Centre for Ecology & Hydrology, highlights that wildfires in Wales, and globally, are starting earlier and lasting longer due to climate change. And with the UK experiencing successive heatwaves that dry out vegetation, it created more fire-prone conditions well beyond typical fire seasons.<br>
+        <br> So far this year, the UK faced around 7 prolonged heatwaves. Dr. Gareth Clay, professor of geography at Manchester University explains that the multiple heatwaves have "shocked the system," making the landscape more vulnerable to bigger and faster-spreading fires.
+      </div>
+      <div class="sub"> Is burnt area a good indicator of what's to come? </div>
+      <div class="para"> Interestingly, global burnt area is on the decline. Researchers at ____ found that despite warming temperatures, lesser land is being burnt than before. But this isn't necessarily a positive sign.<br>
+      <br> Fires are increasingly becoming more intense and destructive, with the potential for greater ecological and economic impacts. </div>
+    <div class="charts" id="1">
+          <div class="chart-title">
+            Burnt Area in the United Kingdom (2015 - 2025)
+          </div>
+          <div class="chart-subtitle">
+            This year saw the UK experience record high burnt area. Wales and
+            Scotland also reached record levels.
+          </div>
+          <div id="totalburnedarea_chart"></div>
+          <div class="source-text">
+            <p>
+              As of 1 July 2025. EFFIS only maps fires that are approximately
+              30ha or larger. <br />
+              Source: European Forest Fire Information System (<a
+                href="https://forest-fire.emergency.copernicus.eu"
+                target="_blank"
+                >EFFIS</a
+              >).
+            </p>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="charts" id="2">
+          <div class="chart-title">Burnt Area Per Month in 2025</div>
+          <div class="chart-subtitle">April saw the largest burnt area.</div>
+          <div id="burnedarea2025"></div>
+          <div class="source-text">
+            <p>
+              As of 1 July 2025. EFFIS only maps fires that are approximately
+              30ha or larger. <br />
+              Source: European Forest Fire Information System (<a
+                href="https://forest-fire.emergency.copernicus.eu"
+                target="_blank"
+                >EFFIS</a
+              >).
+            </p>
+          </div>
+        </div>
     </div>
+
   </body>
 </html>
