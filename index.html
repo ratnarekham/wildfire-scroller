@@ -7,76 +7,118 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-   <section id="scroll">
+    <section id="scroll-1">
       <div class="scroll-graphic">
-        <div class="image-container">
-          <img id="img-1" src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/march_19.png" alt="March 19 Image" />
-          <img id="img-2" src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/april_5.png" alt="April 5 Image" />
-          <img id="img-3" src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/may_15.png" alt="May 15 Image" />
+        <div class="image-container-1">
+          <img
+            id="img-1"
+            src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/march_19.png"
+            alt="March 19 Image"
+          />
+          <img
+            id="img-2"
+            src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/april_5.png"
+            alt="April 5 Image"
+          />
+          <img
+            id="img-3"
+            src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/may_15.png"
+            alt="May 15 Image"
+          />
         </div>
       </div>
 
       <div class="scroll-text">
         <div class="step" data-step="1">
-          <p>2025 has brought Wales its most extreme wildfire season on record.<br> <br> But just how bad has it been? <br> 
+          <p>
+            2025 has brought Wales its most extreme wildfire season on
+            record.<br />
+            <br />
+            But just how bad has it been? <br />
           </p>
         </div>
         <div class="step" data-step="1">
-        <p>
-            On <span style="background-color: rgb(218, 248, 140);">March 19</span> satellites captured this view of Wales from space.<br> <br> That day, fires were burning in atleast 19 different locations. <br> <br> Two of them emitted smoke visible from space. </p>
+          <p>
+            On
+            <span style="background-color: rgb(218, 248, 140)">March 19</span>
+            satellites captured this view of Wales from space.<br />
+            <br />
+            That day, fires were burning in atleast 19 different locations.
+            <br />
+            <br />
+            Two of them emitted smoke visible from space.
+          </p>
         </div>
         <div class="step" data-step="2">
           <p>
-            Near the seaside town of Aberystwyth, a fire that had started the day before was still burning.
+            Near the seaside town of Aberystwyth, a fire that had started the
+            day before was still burning.
           </p>
         </div>
         <div class="step" data-step="3">
           <p>
-            In the small village of Llanfairtalhaiarn, smoke stretched for miles across the countryside.
+            In the small village of Llanfairtalhaiarn, smoke stretched for miles
+            across the countryside.
           </p>
         </div>
         <div class="step" data-step="4">
           <p>
-            By the end of March, Wales had lost more land to fire than all the other UK nations combined. <br>
-            <br> Around 4,700 hectares, almost the size of Cardiff, had burned in just one month. <br>
-            <br> And, this was only the beginning.
+            By the end of March, Wales had lost more land to fire than all the
+            other UK nations combined. <br />
+            <br />
+            Around 4,700 hectares, almost the size of Cardiff, had burned in
+            just one month. <br />
+            <br />
+            And, this was only the beginning.
           </p>
         </div>
         <div class="step" data-step="5">
           <p>
-            April turned out to be the worst month on record for land burned.<br> 
-            <br> On a rare, cloudless day <span style="background-color: rgb(248, 140, 234);">April 5th</span>, satellites recorded fires in atleast four different places around Wales.
+            April turned out to be the worst month on record for land burned.<br />
+            <br />
+            On a rare, cloudless day
+            <span style="background-color: rgb(248, 140, 234)">April 5th</span>,
+            satellites recorded fires in atleast four different places around
+            Wales.
           </p>
         </div>
         <div class="step" data-step="6">
           <p>
-            One of the largest UK wildfires this year broke out in Ystard Fflur, burning for three days. As of April 8, the cause remains unknown.
+            One of the largest UK wildfires this year broke out in Ystard Fflur,
+            burning for three days. As of April 8, the cause remains unknown.
           </p>
         </div>
         <div class="step" data-step="7">
           <p>
-            More than a month later, on <span style="background-color: rgb(153, 140, 248);">May 15th</span>, the scars of those fires were still clearly visible from space. 
+            More than a month later, on
+            <span style="background-color: rgb(153, 140, 248)">May 15th</span>,
+            the scars of those fires were still clearly visible from space.
           </p>
         </div>
         <div class="step" data-step="8">
           <p>
-            What Wales experienced in 2025 was unprecedented. <br> <br> The UK as a whole recorded its highest burnt area since recording began in 2012.
+            What Wales experienced in 2025 was unprecedented. <br />
+            <br />
+            The UK as a whole recorded its highest burnt area since recording
+            began in 2012.
           </p>
         </div>
         <div class="step" data-step="9">
           <p>What does this mean for the future of Wales?</p>
+        </div>
       </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <script>
       //scrollama setupp
-      const scroller = scrollama();
+      const scroller1 = scrollama();
 
       function addCircle(step) {
         d3.selectAll(".zoom-circle").remove();
 
-        const container = d3.select(".image-container");
+        const container1 = d3.select(".image-container-1");
         let circleData;
 
         // circle highlights
@@ -90,9 +132,9 @@
           default:
             return;
         }
-        let svg = container.select("svg.circle-overlay");
+        let svg = container1.select("svg.circle-overlay");
         if (svg.empty()) {
-          svg = container
+          svg = container1
             .append("svg")
             .attr("class", "circle-overlay")
             .style("position", "absolute")
@@ -126,7 +168,7 @@
       function addRectHighlight(step) {
         d3.selectAll(".zoom-highlight").remove();
 
-        const container = d3.select(".image-container");
+        const container1 = d3.select(".image-container-1");
         let rectData;
 
         switch (step) {
@@ -154,9 +196,9 @@
           default:
             return;
         }
-        let svg = container.select("svg.highlight-overlay");
+        let svg = container1.select("svg.highlight-overlay");
         if (svg.empty()) {
-          svg = container
+          svg = container1
             .append("svg")
             .attr("class", "highlight-overlay")
             .style("position", "absolute")
@@ -188,8 +230,8 @@
           .style("opacity", 1);
       }
       // zooming in
-      function zoom(step) {
-        const image = d3.select(".image-container");
+      function zoom1(step) {
+        const image1 = d3.select(".image-container-1");
 
         let transform;
         switch (step) {
@@ -226,7 +268,7 @@
           default:
             transform = "scale(1) translate(0px, 0px)";
         }
-        image.style("transform", transform);
+        image1.style("transform", transform);
 
         setTimeout(() => {
           addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
@@ -237,25 +279,25 @@
         }, 2500);
       }
 
-      function init() {
-        const steps = d3.selectAll(".step");
+      function init1() {
+        const steps1 = d3.selectAll("#scroll-1 .step");
 
-        scroller
+        scroller1
           .setup({
-            step: ".step",
+            step: "#scroll-1 .step",
             offset: 0.5,
             debug: false,
           })
           .onStepEnter((response) => {
-            steps.classed("is-active", (d, i) => i === response.index);
-            zoom(response.index);
+            steps1.classed("is-active", (d, i) => i === response.index);
+            zoom1(response.index);
           });
 
-        window.addEventListener("resize", scroller.resize);
+        window.addEventListener("resize", scroller1.resize);
       }
 
       // kick it off
-      init();
+      init1();
     </script>
 
     <div class="main-article">
@@ -354,31 +396,139 @@
         knowledge to improve prediction, management, and prevention—this is
         vital as wildfires become a more frequent reality."
       </div>
+    </div>
 
-      <div class="sub">What is the 'climate whiplash' effect?</div>
+    <!-- climate whiplash  -->
 
-      <div class="charts" id="3">
-        <div class="chart-title">
-          2025 Monthly Rainfall and Temperature compared to 1991–2020 Average
+    <section id="scroll-2">
+      <div class="sticky-container">
+        <div class="scroll-header">
+          <div class="sub">What is the 'climate whiplash' effect?</div>
         </div>
-        <div class="chart-subtitle">
-          This year has been one of the hottest and driest on record.
+        <div class="scroll-graphic-2">
+          <div class="image-container-2">
+            <div class="charts" id="3">
+              <div id="anomalieschart"></div>
+            </div>
+          </div>
         </div>
-        <div id="anomalieschart"></div>
-        <div class="source-text">
-          <p>
-            As of 1 August 2025.<br />
-            All values are compared to the 1991–2020 average. Negative anomalies
-            before 1991 indicate years cooler than the modern normal. <br />
-            Source: Met Office National Climate Information Centre (<a
-              href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
-              target="_blank"
-              >Climate Data</a
-            >).
-          </p>
+        <div class="sticky-source">
+          <div class="source-text">
+            <p>
+              As of 1 August 2025.<br />
+              All values are compared to the 1991–2020 average. Negative
+              anomalies before 1991 indicate years cooler than the modern
+              normal. <br />
+              Source: Met Office National Climate Information Centre (<a
+                href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
+                target="_blank"
+                >Climate Data</a
+              >).
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div class="scroll-text-2">
+        <div class="step-2" data-step="1">
+          <p>
+            From 1884, the MET Office has been collecting temperature and
+            rainfall every year. <br /><br />
+            These dots represent one year from then to 2025.<br />
+          </p>
+        </div>
+        <div class="step-2" data-step="2">
+          <p>This is Step 2</p>
+        </div>
+        <div class="step-2" data-step="3">
+          <p>This is Step 3</p>
+        </div>
+      </div>
+    </section>
+    <script>
+      const scroller2 = scrollama();
+
+      function updateAnomalies(step) {
+        switch (step) {
+          case 0:
+            d3.selectAll(".dot").transition().style("opacity", 1);
+            //quadrants
+            // d3.select(".v_line").transition().style("opacity", 1);
+            // d3.select(".h_line").transition().style("opacity", 1);
+            // // Show axes only
+            // d3.select(".x-axis").transition().style("opacity", 1);
+            // d3.select(".y-axis").transition().style("opacity", 1);
+            break;
+
+          case 1:
+            // Reveal all scatter dots
+            d3.selectAll(".year-dot")
+              .transition()
+              .duration(600)
+              .style("opacity", 0.6);
+            break;
+
+          case 2:
+            // Emphasize the 2025 dot + label
+            d3.selectAll(".year-dot")
+              .transition()
+              .style("opacity", (d) => (d.year === 2025 ? 1 : 0.2));
+            d3.select(".label-2025").transition().style("opacity", 1);
+            break;
+
+          case 3:
+            // Show 1991–2020 average
+            d3.select(".average-dot").transition().style("opacity", 1);
+            d3.select(".average-label").transition().style("opacity", 0.8);
+            break;
+
+          default:
+            break;
+        }
+      }
+
+      // zooming in
+      // function zoom2(step) {
+      //   const image2 = d3.select(".image-container-2");
+
+      //   let transform;
+      //   switch (step) {
+      //     case 0:
+      //       transform = "scale(1) translate(0px, 0px)";
+      //       break;
+      //     case 1:
+      //       transform = "scale(2) translate(200px, 0px)";
+      //       break;
+      //     case 2:
+      //       transform = "scale(1) translate(0px, 0px)";
+      //       break;
+      //     default:
+      //       transform = "scale(1) translate(0px, 0px)";
+      //   }
+      //   image2.style("transform", transform);
+      // }
+      function init2() {
+        const steps2 = d3.selectAll("#scroll-2 .step-2");
+
+        scroller2
+          .setup({
+            step: "#scroll-2 .step-2",
+            offset: 0.5,
+            debug: false,
+          })
+          .onStepEnter((response) => {
+            steps2.classed("is-active", (d, i) => i === response.index);
+            // zoom2(response.index);
+            updateAnomalies(response.index);
+          });
+
+        window.addEventListener("resize", scroller2.resize);
+      }
+
+      // kick it off
+      init2();
+    </script>
+
     <script src="scripts/totalburnedarea.js"></script>
     <script src="scripts/burnarea2025.js"></script>
     <script src="scripts/anomalies2025.js"></script>

@@ -44,32 +44,52 @@
     const x0 = x(0);
     const y0 = y(0);
 
-    // Axes and 0-lines
+    // reference lines
     g.append("line")
+      .attr("class", "v_line")
       .attr("x1", x0)
       .attr("x2", x0)
       .attr("y1", 0)
       .attr("y2", height)
-      .attr("stroke", "#333333")
-      .attr("stroke-dasharray", "4,4");
+      .attr("stroke", "#000000ff")
+      // .attr("stroke-dasharray", "4,4")
+      .style("opacity", 0);
 
     g.append("line")
+      .attr("class", "h_line")
       .attr("x1", 0)
       .attr("x2", width)
       .attr("y1", y0)
       .attr("y2", y0)
-      .attr("stroke", "#333333")
-      .attr("stroke-dasharray", "4,4");
+      .attr("stroke", "#000000ff")
+      // .attr("stroke-dasharray", "4,4")
+      .style("opacity", 0);
 
     // Axes
     g.append("g")
+      .attr("class", "x-axis")
+      .style("opacity", 0)
       .attr("transform", `translate(0,${height})`)
       .call(d3.axisBottom(x))
       .call((g) => g.selectAll(".tick text").attr("font-size", "14px"));
 
     g.append("g")
+      .attr("class", "y-axis")
+      .style("opacity", 0)
       .call(d3.axisLeft(y))
       .call((g) => g.selectAll(".tick text").attr("font-size", "14px"));
+
+    // chart title BECAUSE IT WONT WORK IN HTML!!11
+    // g.append("text")
+    //   .attr("x", width - 710)
+    //   .attr("y", height - 500)
+    //   .attr("text-anchor", "left")
+    //   .attr("font-size", "1.2rem")
+    //   .attr("font-weight", "bold")
+    //   .style("padding", "10px")
+    //   .style("margin-top", "10px")
+    //   .text("What is the 'climate whiplash effect?")
+    //   .style("opacity", 1);
 
     // Labels
     g.append("text")
@@ -77,24 +97,29 @@
       .attr("y", height + 45)
       .attr("text-anchor", "middle")
       .attr("font-size", "14px")
-      .text("Annual Rainfall (mm) Anomaly"); // Annual Rainfall Anomaly (mm, vs 1991–2020)
+      .text("Annual Rainfall (mm) Anomaly")
+      .style("opacity", 0); // Annual Rainfall Anomaly (mm, vs 1991–2020)
 
     g.append("text")
       .attr("x", 5)
       .attr("y", -20)
       .attr("text-anchor", "middle")
       .attr("font-size", "14px")
-      .text("Annual Temperature (°C) Anomaly"); // Annual Temperature Anomaly
+      .text("Annual Temperature (°C) Anomaly")
+      .style("opacity", 0); // Annual Temperature Anomaly
 
     // Scatter dots
     g.selectAll(".dot")
       .data(data)
       .join("circle")
       .attr("class", "dot")
+      .style("opacity", 0)
       .attr("cx", (d) => x(d.rain_anom_mm))
       .attr("cy", (d) => y(d.temp_anom_C))
-      .attr("r", (d) => (d.year === 2025 ? 6 : 4))
-      .attr("fill", (d) => (d.year === 2025 ? "#df0808ff" : "gray"))
+      .attr("r", 4)
+      // .attr("r", (d) => (d.year === 2025 ? 6 : 4))
+      .attr("fill", "gray")
+      // .attr("fill", (d) => (d.year === 2025 ? "#df0808ff" : "gray"))
       .on("mouseover", (event, d) => {
         tooltip.style("opacity", 1);
         tooltip
@@ -120,7 +145,8 @@
       .attr("cx", x(0))
       .attr("cy", y(0))
       .attr("r", 4)
-      .attr("fill", "gray");
+      .attr("fill", "gray")
+      .style("opacity", 0);
 
     g.append("text")
       .attr("x", x(0) + 8)
@@ -128,24 +154,8 @@
       .style("font-size", "14px")
       .style("font-weight", "bold")
       .style("opacity", 0.5)
-      .text("1991–2020 average");
-
-    // Reference lines
-    g.append("line")
-      .attr("x1", x(0))
-      .attr("x2", x(0))
-      .attr("y1", 0)
-      .attr("y2", height)
-      .attr("stroke", "black")
-      .attr("stroke-dasharray", "4,4");
-
-    g.append("line")
-      .attr("x1", 0)
-      .attr("x2", width)
-      .attr("y1", y(0))
-      .attr("y2", y(0))
-      .attr("stroke", "black")
-      .attr("stroke-dasharray", "4,4");
+      .text("1991–2020 average")
+      .style("opacity", 0);
 
     //Reference Line text
     g.append("text")
@@ -153,7 +163,8 @@
       .attr("y", height - 470)
       .attr("text-anchor", "middle")
       .attr("font-size", "14px")
-      .text("← Drier | Wetter →");
+      .text("← Drier | Wetter →")
+      .style("opacity", 0);
 
     g.append("text")
       .attr("x", width - 360)
@@ -161,7 +172,8 @@
       .attr("text-anchor", "end")
       .attr("font-size", "14px")
       .attr("transform", "rotate(90)")
-      .text("← Hotter | Colder →");
+      .text("← Hotter | Colder →")
+      .style("opacity", 0);
 
     g.append("text")
       .attr("x", x(0) - 125)
@@ -170,6 +182,7 @@
       .style("font-size", "14px")
       .style("font-weight", "bold")
       .style("opacity", 0.7)
-      .style("fill", "#df0808ff");
+      .style("fill", "#df0808ff")
+      .style("opacity", 0);
   });
 })();
