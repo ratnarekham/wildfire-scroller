@@ -1,4 +1,4 @@
-//STACKED BAR CHART
+//GROUPED  BAR CHART
 
 (function () {
   d3.csv("data/burned_area_2025_by_country.csv", d3.autoType)

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section id="scroll">
+   <section id="scroll">
       <div class="scroll-graphic">
         <div class="image-container">
           <img id="img-1" src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/march_19.png" alt="March 19 Image" />
@@ -67,114 +67,127 @@
           <p>What does this mean for the future of Wales?</p>
       </div>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
-    <script src="scripts/totalburnedarea.js"></script>
-    <script src="scripts/burnarea2025.js"></script>
     <script>
       //scrollama setupp
       const scroller = scrollama();
 
       function addCircle(step) {
-  d3.selectAll(".zoom-circle").remove();
-  
-  const container = d3.select(".image-container");
-  let circleData;
-  
-  // circle highlights 
-  switch (step) {
-    case 2:
-      circleData = { cx: "13.7%", cy: "47%", r: 10, color: "pink" };
-      break;
-    case 3:
-      circleData = { cx: "15.5%", cy: "21%", r: 10, color: "pink" };
-      break;
-    default:
-      return;
-  }
-  let svg = container.select("svg.circle-overlay");
-  if (svg.empty()) {
-    svg = container.append("svg")
-      .attr("class", "circle-overlay")
-      .style("position", "absolute")
-      .style("top", "0")
-      .style("left", "0")
-      .style("width", "100%")
-      .style("height", "100%")
-      .style("pointer-events", "none")
-      .style("z-index", "10");
-  }
+        d3.selectAll(".zoom-circle").remove();
 
-  svg.append("circle")
-    .attr("class", "zoom-circle")
-    .attr("cx", circleData.cx)
-    .attr("cy", circleData.cy)
-    .attr("r", 0)
-    .style("fill", "solid")
-    .attr("fill", circleData.color)
-    .attr("fill-opacity", 0.1)
-    .style("stroke", circleData.color)
-    .style("stroke-width", "0.5px")
-    .style("opacity", 0.1)
-    .transition()
-    .duration(500)
-    .attr("r", circleData.r)
-    .style("opacity", 1);
-}
+        const container = d3.select(".image-container");
+        let circleData;
 
-// rectangle highlights 
-function addRectHighlight(step) {
-  d3.selectAll(".zoom-highlight").remove();
-  
-  const container = d3.select(".image-container");
-  let rectData;
-  
-  switch (step) {
-    // case 3:
-    //   rectData = { x: "17%", y: "75%", width: "2%", height: "5%", color: "pink" };
-    //   break;
-    case 6:
-      rectData = { x: "65.5%", y: "52%", width: "2%", height: "6%", color: "pink" };
-      break;
-    case 7:
-      rectData = { x: "115.3%", y: "51.5%", width: "2%", height: "6%", color: "pink" };
-      break;
-    default:
-      return;
-  }
-  let svg = container.select("svg.highlight-overlay");
-  if (svg.empty()) {
-    svg = container.append("svg")
-      .attr("class", "highlight-overlay")
-      .style("position", "absolute")
-      .style("top", "0")
-      .style("left", "0")
-      .style("width", "100%")
-      .style("height", "100%")
-      .style("pointer-events", "none")
-      .attr("overflow", "visible")
-      .style("z-index", "10");
-  }
-  svg.append("rect")
-    .attr("class", "zoom-highlight")
-    .attr("x", rectData.x)
-    .attr("y", rectData.y)
-    .attr("width", "0%")
-    .attr("height", "0%")
-    .style("fill", "solid")
-    .attr("fill", rectData.color)
-    .attr("fill-opacity", 0.1)
-    .style("stroke", rectData.color)
-    .style("stroke-width", "0.5px")
-    .style("opacity", 0)
-    .transition()
-    .duration(800)
-    .attr("width", rectData.width)
-    .attr("height", rectData.height)
-    .style("opacity", 1);
-}
-// zooming in 
+        // circle highlights
+        switch (step) {
+          case 2:
+            circleData = { cx: "13.7%", cy: "47%", r: 10, color: "pink" };
+            break;
+          case 3:
+            circleData = { cx: "15.5%", cy: "21%", r: 10, color: "pink" };
+            break;
+          default:
+            return;
+        }
+        let svg = container.select("svg.circle-overlay");
+        if (svg.empty()) {
+          svg = container
+            .append("svg")
+            .attr("class", "circle-overlay")
+            .style("position", "absolute")
+            .style("top", "0")
+            .style("left", "0")
+            .style("width", "100%")
+            .style("height", "100%")
+            .style("pointer-events", "none")
+            .style("z-index", "10");
+        }
+
+        svg
+          .append("circle")
+          .attr("class", "zoom-circle")
+          .attr("cx", circleData.cx)
+          .attr("cy", circleData.cy)
+          .attr("r", 0)
+          .style("fill", "solid")
+          .attr("fill", circleData.color)
+          .attr("fill-opacity", 0.1)
+          .style("stroke", circleData.color)
+          .style("stroke-width", "0.5px")
+          .style("opacity", 0.1)
+          .transition()
+          .duration(500)
+          .attr("r", circleData.r)
+          .style("opacity", 1);
+      }
+
+      // rectangle highlights
+      function addRectHighlight(step) {
+        d3.selectAll(".zoom-highlight").remove();
+
+        const container = d3.select(".image-container");
+        let rectData;
+
+        switch (step) {
+          // case 3:
+          //   rectData = { x: "17%", y: "75%", width: "2%", height: "5%", color: "pink" };
+          //   break;
+          case 6:
+            rectData = {
+              x: "65.5%",
+              y: "52%",
+              width: "2%",
+              height: "6%",
+              color: "pink",
+            };
+            break;
+          case 7:
+            rectData = {
+              x: "115.3%",
+              y: "51.5%",
+              width: "2%",
+              height: "6%",
+              color: "pink",
+            };
+            break;
+          default:
+            return;
+        }
+        let svg = container.select("svg.highlight-overlay");
+        if (svg.empty()) {
+          svg = container
+            .append("svg")
+            .attr("class", "highlight-overlay")
+            .style("position", "absolute")
+            .style("top", "0")
+            .style("left", "0")
+            .style("width", "100%")
+            .style("height", "100%")
+            .style("pointer-events", "none")
+            .attr("overflow", "visible")
+            .style("z-index", "10");
+        }
+        svg
+          .append("rect")
+          .attr("class", "zoom-highlight")
+          .attr("x", rectData.x)
+          .attr("y", rectData.y)
+          .attr("width", "0%")
+          .attr("height", "0%")
+          .style("fill", "solid")
+          .attr("fill", rectData.color)
+          .attr("fill-opacity", 0.1)
+          .style("stroke", rectData.color)
+          .style("stroke-width", "0.5px")
+          .style("opacity", 0)
+          .transition()
+          .duration(800)
+          .attr("width", rectData.width)
+          .attr("height", rectData.height)
+          .style("opacity", 1);
+      }
+      // zooming in
       function zoom(step) {
         const image = d3.select(".image-container");
 
@@ -205,24 +218,23 @@ function addRectHighlight(step) {
             transform = "scale(5.6) translate(-1085px, -20px)";
             break;
           case 8:
-            transform = "scale(1.5) translate(-1250px, 0px)";// may 15
+            transform = "scale(1.5) translate(-1250px, 0px)"; // may 15
             break;
           case 9:
-            transform = "scale(0.5) translate(-1700px, 0px)"; 
+            transform = "scale(0.5) translate(-1700px, 0px)";
             break;
           default:
             transform = "scale(1) translate(0px, 0px)";
         }
         image.style("transform", transform);
 
+        setTimeout(() => {
+          addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
+        }, 2500);
 
-setTimeout(() => {
-    addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
-  }, 2500);
-
-  setTimeout(() => {
-    addRectHighlight(step); // Use addCircle, addPulsingCircle, or addRectHighlight
-  }, 2500);
+        setTimeout(() => {
+          addRectHighlight(step); // Use addCircle, addPulsingCircle, or addRectHighlight
+        }, 2500);
       }
 
       function init() {
@@ -247,40 +259,80 @@ setTimeout(() => {
     </script>
 
     <div class="main-article">
-      <div class="headline"> Counting the flames behind Wales' Wildfires </div>
-      <div class="para"> Wildfires are no strangers in Wales. From pine trees to bracken, they have shaped the landscape and the ecosystems as we know them today. But this year's fires looked nothing like those of the past. <br> 
-        <br> They were larger, faster and harder to control than anything seen in recent memory. The scale of the crisis this year raises an urgent question - what changed? <br>
-      <br> Douglas I Kelley, wildfire scientist at the UK Centre for Ecology & Hydrology, highlights that wildfires in Wales, and globally, are starting earlier and lasting longer due to climate change. And with the UK experiencing successive heatwaves that dry out vegetation, it created more fire-prone conditions well beyond typical fire seasons.<br>
-        <br> So far this year, the UK faced around 7 prolonged heatwaves. Dr. Gareth Clay, professor of geography at Manchester University explains that the multiple heatwaves have "shocked the system," making the landscape more vulnerable to bigger and faster-spreading fires.
+      <div class="headline">Counting the flames behind Wales' Wildfires</div>
+      <div class="para">
+        Wildfires are no strangers in Wales. From pine trees to bracken ferns,
+        they have shaped the landscape and the ecosystems as we know them today.
+        But this year's fires looked nothing like those of the past. <br />
+        <br />
+        They were larger, faster and harder to control than anything seen in
+        recent memory. The scale of the crisis this year raises an urgent
+        question - what changed? <br />
       </div>
-      <div class="sub"> Is burnt area a good indicator of what's to come? </div>
-      <div class="para"> Interestingly, global burnt area is on the decline. Researchers at ____ found that despite warming temperatures, lesser land is being burnt than before. But this isn't necessarily a positive sign.<br>
-      <br> Fires are increasingly becoming more intense and destructive, with the potential for greater ecological and economic impacts. </div>
-    <div class="charts" id="1">
-          <div class="chart-title">
-            Burnt Area in the United Kingdom (2015 - 2025)
-          </div>
-          <div class="chart-subtitle">
-            This year saw the UK experience record high burnt area. Wales and
-            Scotland also reached record levels.
-          </div>
-          <div id="totalburnedarea_chart"></div>
-          <div class="source-text">
-            <p>
-              As of 1 July 2025. EFFIS only maps fires that are approximately
-              30ha or larger. <br />
-              Source: European Forest Fire Information System (<a
-                href="https://forest-fire.emergency.copernicus.eu"
-                target="_blank"
-                >EFFIS</a
-              >).
-            </p>
-          </div>
+      <div class="sub">
+        Wildfire season is now starting earlier and lasting longer.
+      </div>
+      <div class="para">
+        Researchers at _____ did this to find out that wildfires are longer now.
+        <br />
+        <br />Spring wildfires are not uncommon in Wales. Fires clear the land
+        of undergrowth, making way for new shoots to sprout. And rain would help
+        extinguish these fires. <br />
+        <br />
+        2025 however saw the warmest and driest spring since records began. With
+        high temperatures, abundant growth and, no rain, the stage was set for a
+        catastrophic wildfire season. <br />
+        <br />
+        Scientist call days with such conditions 'high fire weather'. And they
+        expect more of these days in the future. Douglas I Kelley, wildfire
+        scientist at the UK Centre for Ecology & Hydrology, attributes this to
+        climate change. This year, the UK experienced atleast 7 successive
+        heatwaves according to the MET Office. Heatwaves dry out vegetation,
+        making it more flammable. <br />
+      </div>
+      <div class="sub">Successive heatwaves 'shocked' the system.</div>
+      <div class="para">
+        The multiple heatwaves have "shocked the system," says Dr. Gareth Clay,
+        professor of geography at Manchester University. Due to this, fires were
+        able to spread rapidly, overwhelming firefighting efforts. <br />
+        <br />
+      </div>
+      <div class="sub">
+        Is burnt area an effective indicator of what's to come?
+      </div>
+      <div class="para">
+        Interestingly, global burnt area is on the decline. But this isn't
+        necessarily a positive sign.<br />
+        <br />
+        Fires are now more intense and destructive, and more people are being
+        exposed to them. Researchers at ____ found that despite warming
+        temperatures, lesser land is being burnt than before.
+      </div>
+      <div class="charts" id="1">
+        <div class="chart-title">
+          Burnt Area in the United Kingdom (2015 - 2025)
         </div>
+        <div class="chart-subtitle">
+          This year saw the UK experience record high burnt area. Wales and
+          Scotland also reached record levels.
+        </div>
+        <div id="totalburnedarea_chart"></div>
+        <div class="source-text">
+          <p>
+            As of 1 July 2025. EFFIS only maps fires that are approximately 30ha
+            or larger. <br />
+            Source: European Forest Fire Information System (<a
+              href="https://forest-fire.emergency.copernicus.eu"
+              target="_blank"
+              >EFFIS</a
+            >).
+          </p>
+        </div>
+      </div>
 
-        <br>
+      <br />
 
-        <div class="charts" id="2">
+      <!-- <div class="charts" id="2">
           <div class="chart-title">Burnt Area Per Month in 2025</div>
           <div class="chart-subtitle">April saw the largest burnt area.</div>
           <div id="burnedarea2025"></div>
@@ -295,8 +347,40 @@ setTimeout(() => {
               >).
             </p>
           </div>
-        </div>
-    </div>
+        </div> -->
 
+      <div class="para">
+        "The challenge ahead is integrating fire science, data, and local
+        knowledge to improve prediction, management, and prevention—this is
+        vital as wildfires become a more frequent reality."
+      </div>
+
+      <div class="sub">What is the 'climate whiplash' effect?</div>
+
+      <div class="charts" id="3">
+        <div class="chart-title">
+          2025 Monthly Rainfall and Temperature compared to 1991–2020 Average
+        </div>
+        <div class="chart-subtitle">
+          This year has been one of the hottest and driest on record.
+        </div>
+        <div id="anomalieschart"></div>
+        <div class="source-text">
+          <p>
+            As of 1 August 2025.<br />
+            All values are compared to the 1991–2020 average. Negative anomalies
+            before 1991 indicate years cooler than the modern normal. <br />
+            Source: Met Office National Climate Information Centre (<a
+              href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
+              target="_blank"
+              >Climate Data</a
+            >).
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/totalburnedarea.js"></script>
+    <script src="scripts/burnarea2025.js"></script>
+    <script src="scripts/anomalies2025.js"></script>
   </body>
 </html>
