@@ -205,13 +205,113 @@
       .style("opacity", 0);
 
     g.append("text")
-      .attr("x", x(0) - 125)
-      .attr("y", y(0) - 132)
-      .text("2025")
-      .style("font-size", "14px")
+      .attr("x", x(0) - 38)
+      .attr("y", y(0) + 38)
+      .text("1913")
+      .attr("class", "l1913")
+      .style("font-size", "5px")
       .style("font-weight", "bold")
       .style("opacity", 0.7)
-      .style("fill", "#df0808ff")
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) - 20)
+      .attr("y", y(0) + 35)
+      .text("1914")
+      .attr("class", "l1914")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) + 128)
+      .attr("y", y(0) + 39)
+      .text("2012")
+      .attr("class", "l2012")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) - 105)
+      .attr("y", y(0) - 70)
+      .text("2011")
+      .attr("class", "l2011")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) - 62)
+      .attr("y", y(0) - 42)
+      .text("2018")
+      .attr("class", "l2018")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) + 72)
+      .attr("y", y(0) - 41)
+      .text("2019")
+      .attr("class", "l2019")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) + 12)
+      .attr("y", y(0) - 33)
+      .text("2021")
+      .attr("class", "l2021")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) - 103)
+      .attr("y", y(0) - 111)
+      .text("2022")
+      .attr("class", "l2022")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) - 115)
+      .attr("y", y(0) - 130)
+      .text("2025")
+      .attr("class", "l2025")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) + 100)
+      .attr("y", y(0) - 82)
+      .text("2024")
+      .attr("class", "l2024")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
       .style("opacity", 0);
   });
 })();

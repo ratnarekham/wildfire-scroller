@@ -304,9 +304,9 @@
       <div class="headline">Counting the flames behind Wales' Wildfires</div>
       <div class="para">
         Wales burned like never before in 2025. But wildfires have always been a
-        part of the country. From pine trees to bracken ferns, they shaped the
-        landscape and the ecosystems as we know them today. But this year's
-        fires looked nothing like those of the past. <br />
+        part of the Welsh landscape. From pine trees to bracken ferns, they
+        shaped the landscape and the ecosystems as we know them today. But this
+        year's fires looked nothing like those of the past. <br />
         <br />
         They were larger, faster and harder to control than anything seen in
         recent memory. The scale of the crisis this year raises an urgent
@@ -360,17 +360,17 @@
           Scotland also reached record levels.
         </div> -->
         <div id="totalburnedarea_chart"></div>
-        <div class="source-text">
-          <p>
-            As of 1 July 2025. EFFIS only maps fires that are approximately 30ha
-            or larger. <br />
-            Source: European Forest Fire Information System (<a
-              href="https://forest-fire.emergency.copernicus.eu"
-              target="_blank"
-              >EFFIS</a
-            >).
-          </p>
-        </div>
+      </div>
+      <div class="source-text">
+        <p>
+          As of 1 July 2025. EFFIS only maps fires that are approximately 30ha
+          or larger. <br />
+          Source: European Forest Fire Information System (<a
+            href="https://forest-fire.emergency.copernicus.eu"
+            target="_blank"
+            >EFFIS</a
+          >).
+        </p>
       </div>
 
       <br />
@@ -411,21 +411,6 @@
             <div class="charts" id="3">
               <div id="anomalieschart"></div>
             </div>
-          </div>
-        </div>
-        <div class="sticky-source">
-          <div class="source-text">
-            <p>
-              As of 1 August 2025.<br />
-              All values are compared to the 1991–2020 average. Negative
-              anomalies before 1991 indicate years cooler than the modern
-              normal. <br />
-              Source: Met Office National Climate Information Centre (<a
-                href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
-                target="_blank"
-                >Climate Data</a
-              >).
-            </p>
           </div>
         </div>
       </div>
@@ -568,6 +553,8 @@
                 highlightYears1.includes(d.year) ? "1" : "0.2"
               );
 
+            d3.select(".l1913").transition().style("opacity", 1);
+            d3.select(".l1914").transition().style("opacity", 1);
             break;
 
           case 6:
@@ -583,6 +570,12 @@
               .attr("fill-opacity", (d) =>
                 highlightYears2.includes(d.year) ? "1" : "0.2"
               );
+
+            d3.select(".l2011").transition().style("opacity", 1);
+            d3.select(".l2012").transition().style("opacity", 1);
+
+            d3.select(".l1913").transition().style("opacity", 0);
+            d3.select(".l1914").transition().style("opacity", 0);
             break;
 
           case 7:
@@ -609,14 +602,6 @@
                   return 4;
                 return 3;
               })
-              // .attr("stroke", (d) => {
-              //   if (wildfireyears.includes(d.year)) return "yellow";
-              //   return;
-              // })
-              // .attr("stroke-width", (d) => {
-              //   if (wildfireyears.includes(d.year)) return "1";
-              //   return;
-              // })
 
               .attr("fill-opacity", (d) => {
                 if (
@@ -627,6 +612,16 @@
                   return 1;
                 return 0.2;
               });
+
+            d3.select(".l2018").transition().style("opacity", 1);
+            d3.select(".l2019").transition().style("opacity", 1);
+            d3.select(".l2021").transition().style("opacity", 1);
+            d3.select(".l2022").transition().style("opacity", 1);
+            d3.select(".l2024").transition().style("opacity", 1);
+            d3.select(".l2025").transition().style("opacity", 1);
+
+            d3.select(".l2011").transition().style("opacity", 0);
+            d3.select(".l2012").transition().style("opacity", 0);
 
             break;
 
@@ -639,6 +634,13 @@
               .attr("stroke-width", 0)
               .attr("fill-opacity", 1)
               .style("opacity", 1);
+
+            d3.select(".l2018").transition().style("opacity", 0);
+            d3.select(".l2019").transition().style("opacity", 0);
+            d3.select(".l2021").transition().style("opacity", 0);
+            d3.select(".l2022").transition().style("opacity", 0);
+            d3.select(".l2024").transition().style("opacity", 0);
+            d3.select(".l2025").transition().style("opacity", 0);
             break;
 
           default:
@@ -697,6 +699,18 @@
     </script>
 
     <div class="main-article">
+      <div class="source-text">
+        <p>
+          As of 1 August 2025.<br />
+          All values are compared to the 1991–2020 average. Negative anomalies
+          before 1991 indicate years cooler than the modern normal. <br />
+          Source: Met Office National Climate Information Centre (<a
+            href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
+            target="_blank"
+            >Climate Data</a
+          >).
+        </p>
+      </div>
       <div class="para">
         Scientists belive that climate change is the driving force behind such
         whiplashes, causing it occur more frequently. But for a fire to start,
