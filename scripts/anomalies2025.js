@@ -40,9 +40,46 @@
       .nice()
       .range([height, 0]);
 
-    // Quadrant rectangles
+    // quadrants
     const x0 = x(0);
     const y0 = y(0);
+
+    // Quadrant rectangles
+    g.append("rect")
+      .attr("class", "topleft")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("width", x0)
+      .attr("height", y0)
+      .attr("fill", "red")
+      .style("opacity", 0);
+
+    g.append("rect")
+      .attr("class", "topright")
+      .attr("x", x0)
+      .attr("y", 0)
+      .attr("width", width - x0)
+      .attr("height", y0)
+      .attr("fill", "lightblue")
+      .style("opacity", 0);
+
+    g.append("rect")
+      .attr("class", "bottomleft")
+      .attr("x", 0)
+      .attr("y", y0)
+      .attr("width", x0)
+      .attr("height", height - y0)
+      .attr("fill", "yellow")
+      .style("opacity", 0);
+
+    g.append("rect")
+      .attr("class", "bottomright")
+      .attr("x", x0)
+      .attr("y", y0)
+      .attr("width", width - x0)
+      .attr("height", height - y0)
+      .attr("fill", "lightgreen")
+      .style("opacity", 0);
 
     // reference lines
     g.append("line")
@@ -52,7 +89,7 @@
       .attr("y1", 0)
       .attr("y2", height)
       .attr("stroke", "#000000ff")
-      // .attr("stroke-dasharray", "4,4")
+      .attr("stroke-dasharray", "4,4")
       .style("opacity", 0);
 
     g.append("line")
@@ -62,7 +99,7 @@
       .attr("y1", y0)
       .attr("y2", y0)
       .attr("stroke", "#000000ff")
-      // .attr("stroke-dasharray", "4,4")
+      .attr("stroke-dasharray", "4,4")
       .style("opacity", 0);
 
     // Axes
@@ -79,20 +116,9 @@
       .call(d3.axisLeft(y))
       .call((g) => g.selectAll(".tick text").attr("font-size", "14px"));
 
-    // chart title BECAUSE IT WONT WORK IN HTML!!11
-    // g.append("text")
-    //   .attr("x", width - 710)
-    //   .attr("y", height - 500)
-    //   .attr("text-anchor", "left")
-    //   .attr("font-size", "1.2rem")
-    //   .attr("font-weight", "bold")
-    //   .style("padding", "10px")
-    //   .style("margin-top", "10px")
-    //   .text("What is the 'climate whiplash effect?")
-    //   .style("opacity", 1);
-
     // Labels
     g.append("text")
+      .attr("class", "xlabel")
       .attr("x", width / 2)
       .attr("y", height + 45)
       .attr("text-anchor", "middle")
@@ -101,6 +127,7 @@
       .style("opacity", 0); // Annual Rainfall Anomaly (mm, vs 1991–2020)
 
     g.append("text")
+      .attr("class", "ylabel")
       .attr("x", 5)
       .attr("y", -20)
       .attr("text-anchor", "middle")
@@ -149,30 +176,32 @@
       .style("opacity", 0);
 
     g.append("text")
+      .attr("class", "averagelabel")
       .attr("x", x(0) + 8)
       .attr("y", y(0) - 8)
       .style("font-size", "14px")
       .style("font-weight", "bold")
-      .style("opacity", 0.5)
       .text("1991–2020 average")
       .style("opacity", 0);
 
     //Reference Line text
     g.append("text")
+      .attr("class", "xlabel1")
       .attr("x", x(0) + 5)
       .attr("y", height - 470)
       .attr("text-anchor", "middle")
       .attr("font-size", "14px")
-      .text("← Drier | Wetter →")
+      .text("← Drier   Wetter →")
       .style("opacity", 0);
 
     g.append("text")
+      .attr("class", "ylabel1")
       .attr("x", width - 360)
       .attr("y", y(0) - 830)
       .attr("text-anchor", "end")
       .attr("font-size", "14px")
       .attr("transform", "rotate(90)")
-      .text("← Hotter | Colder →")
+      .text("← Hotter   Cooler →")
       .style("opacity", 0);
 
     g.append("text")

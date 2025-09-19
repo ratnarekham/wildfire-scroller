@@ -121,6 +121,12 @@ body {
   height: 10vh;
 }
 
+#scroll-2::after {
+  content: "";
+  display: block;
+  height: 20vh;
+}
+
 .step {
   margin-right: 20vh;
   text-align: left;

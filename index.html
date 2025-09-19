@@ -354,10 +354,10 @@
         <div class="chart-title">
           Burnt Area in the United Kingdom (2015 - 2025)
         </div>
-        <div class="chart-subtitle">
+        <!-- <div class="chart-subtitle">
           This year saw the UK experience record high burnt area. Wales and
           Scotland also reached record levels.
-        </div>
+        </div> -->
         <div id="totalburnedarea_chart"></div>
         <div class="source-text">
           <p>
@@ -432,16 +432,82 @@
       <div class="scroll-text-2">
         <div class="step-2" data-step="1">
           <p>
-            From 1884, the MET Office has been collecting temperature and
-            rainfall every year. <br /><br />
-            These dots represent one year from then to 2025.<br />
+            This chart shows how each year’s weather was different from the
+            usual in Wales.<br />
+            <br />
+            The 'usual' here is called the climate normal.
+            <br />
+            <br />
+            A climate normal is the 30-year average weather that scientists use
+            as a baseline for comparing any single year. This gets updated every
+            decade.
           </p>
         </div>
         <div class="step-2" data-step="2">
-          <p>This is Step 2</p>
+          <p>
+            The most recent climate normal is 1991-2020, which these lines
+            represent.
+          </p>
         </div>
         <div class="step-2" data-step="3">
-          <p>This is Step 3</p>
+          <p>
+            Every dot is one year. Left means drier than usual, right means
+            wetter. Down means cooler, up means hotter.
+          </p>
+        </div>
+        <div class="step-2" data-step="4">
+          <p>
+            The chart splits into four quadrants:
+            <span style="background-color: rgba(255, 0, 0, 0.232)">
+              hot and dry </span
+            >,
+            <span style="background-color: rgba(0, 89, 255, 0.232)">
+              hot and wet </span
+            >,
+            <span style="background-color: rgba(255, 255, 0, 0.232)">
+              cold and dry</span
+            >,
+            <span style="background-color: rgba(0, 255, 60, 0.232)">
+              cold and wet</span
+            >.
+          </p>
+        </div>
+        <div class="step-2" data-step="5">
+          <p>As the years go by, the weather jumps around these boxes.</p>
+        </div>
+        <div class="step-2" data-step="6">
+          <p>
+            Sometimes the jumps are small and smooth. <br />
+            <br />
+            Like 1913 to 1914. Both years were relatively cool and dry.
+          </p>
+        </div>
+        <div class="step-2" data-step="7">
+          <p>
+            Other times they are sudden. <br />
+            <br />
+            Here the weather flipped from hot and dry in 2011 to cold and wet in
+            2012.
+          </p>
+        </div>
+        <div class="step-2" data-step="8">
+          <p>
+            These sudden and long jumps are becoming more frequent and severe.
+            <br />
+            <br />
+            Each of these years had severe weather events in Wales and the UK.
+            <br />
+            <br />
+            2024 was an exceptionally wet year while 2025 saw the driest spring
+            in 100 years and multiple heatwaves.
+          </p>
+        </div>
+        <div class="step-2" data-step="9">
+          <p>
+            Scientists call these jumps 'climate whiplash'. <br />
+            <br />Swinging from two extremes is making life harder because
+            people, farms, and cities have little time to recover.
+          </p>
         </div>
       </div>
     </section>
@@ -451,62 +517,162 @@
       function updateAnomalies(step) {
         switch (step) {
           case 0:
-            d3.selectAll(".dot").transition().style("opacity", 1);
+            // Show axes only
+            d3.select(".x-axis").transition().style("opacity", 1);
+            d3.select(".y-axis").transition().style("opacity", 1);
+            d3.select(".xlabel").transition().style("opacity", 1);
+            d3.select(".ylabel").transition().style("opacity", 1);
             //quadrants
-            // d3.select(".v_line").transition().style("opacity", 1);
-            // d3.select(".h_line").transition().style("opacity", 1);
-            // // Show axes only
-            // d3.select(".x-axis").transition().style("opacity", 1);
-            // d3.select(".y-axis").transition().style("opacity", 1);
+
             break;
 
           case 1:
-            // Reveal all scatter dots
-            d3.selectAll(".year-dot")
-              .transition()
-              .duration(600)
-              .style("opacity", 0.6);
+            d3.select(".v_line").transition().style("opacity", 1);
+            d3.select(".h_line").transition().style("opacity", 1);
+            d3.select(".averagelabel").transition().style("opacity", 0.2);
+
             break;
 
           case 2:
-            // Emphasize the 2025 dot + label
-            d3.selectAll(".year-dot")
-              .transition()
-              .style("opacity", (d) => (d.year === 2025 ? 1 : 0.2));
-            d3.select(".label-2025").transition().style("opacity", 1);
+            d3.selectAll(".dot").transition().style("opacity", 1);
+            d3.select(".xlabel1").transition().style("opacity", 1);
+            d3.select(".ylabel1").transition().style("opacity", 1);
             break;
 
           case 3:
-            // Show 1991–2020 average
-            d3.select(".average-dot").transition().style("opacity", 1);
-            d3.select(".average-label").transition().style("opacity", 0.8);
+            d3.select(".topleft").transition().style("opacity", 0.2);
+            d3.select(".topright").transition().style("opacity", 0.2);
+            d3.select(".bottomleft").transition().style("opacity", 0.2);
+            d3.select(".bottomright").transition().style("opacity", 0.2);
+            break;
+
+          case 4:
+            d3.select(".topleft").transition().style("opacity", 0);
+            d3.select(".topright").transition().style("opacity", 0);
+            d3.select(".bottomleft").transition().style("opacity", 0);
+            d3.select(".bottomright").transition().style("opacity", 0);
+            break;
+
+          case 5:
+            const highlightYears1 = [1913, 1914];
+
+            d3.selectAll(".dot")
+              .transition()
+              .duration(600)
+              .attr("fill", (d) =>
+                highlightYears1.includes(d.year) ? "#df0808" : "gray"
+              )
+              .attr("r", (d) => (highlightYears1.includes(d.year) ? 4 : 3))
+              .attr("fill-opacity", (d) =>
+                highlightYears1.includes(d.year) ? "1" : "0.2"
+              );
+
+            break;
+
+          case 6:
+            const highlightYears2 = [2011, 2012];
+
+            d3.selectAll(".dot")
+              .transition()
+              .duration(600)
+              .attr("fill", (d) =>
+                highlightYears2.includes(d.year) ? "#df0808" : "gray"
+              )
+              .attr("r", (d) => (highlightYears2.includes(d.year) ? 4 : 3))
+              .attr("fill-opacity", (d) =>
+                highlightYears2.includes(d.year) ? "1" : "0.2"
+              );
+            break;
+
+          case 7:
+            const highlightYears3 = [2021, 2022];
+            const highlightYears4 = [2018, 2019];
+            const highlightYears5 = [2024, 2025];
+            const wildfireyears = [2019, 2022, 2025];
+
+            d3.selectAll(".dot")
+              .transition()
+              .duration(600)
+              .attr("fill", (d) => {
+                if (highlightYears3.includes(d.year)) return "red";
+                if (highlightYears4.includes(d.year)) return "green";
+                if (highlightYears5.includes(d.year)) return "blue";
+                return "gray";
+              })
+              .attr("r", (d) => {
+                if (
+                  highlightYears3.includes(d.year) ||
+                  highlightYears4.includes(d.year) ||
+                  highlightYears5.includes(d.year)
+                )
+                  return 4;
+                return 3;
+              })
+              // .attr("stroke", (d) => {
+              //   if (wildfireyears.includes(d.year)) return "yellow";
+              //   return;
+              // })
+              // .attr("stroke-width", (d) => {
+              //   if (wildfireyears.includes(d.year)) return "1";
+              //   return;
+              // })
+
+              .attr("fill-opacity", (d) => {
+                if (
+                  highlightYears3.includes(d.year) ||
+                  highlightYears4.includes(d.year) ||
+                  highlightYears5.includes(d.year)
+                )
+                  return 1;
+                return 0.2;
+              });
+
+            break;
+
+          case 8:
+            d3.selectAll(".dot")
+              .transition()
+              .attr("fill", "gray")
+              .attr("r", 3)
+              .attr("stroke", 0)
+              .attr("stroke-width", 0)
+              .attr("fill-opacity", 1)
+              .style("opacity", 1);
             break;
 
           default:
+            d3.select(".topleft").transition().style("opacity", 0);
+            d3.select(".topright").transition().style("opacity", 0);
+            d3.select(".bottomleft").transition().style("opacity", 0);
+            d3.select(".bottomright").transition().style("opacity", 0);
+
             break;
         }
       }
 
       // zooming in
-      // function zoom2(step) {
-      //   const image2 = d3.select(".image-container-2");
+      function zoom2(step) {
+        const image2 = d3.select(".image-container-2");
 
-      //   let transform;
-      //   switch (step) {
-      //     case 0:
-      //       transform = "scale(1) translate(0px, 0px)";
-      //       break;
-      //     case 1:
-      //       transform = "scale(2) translate(200px, 0px)";
-      //       break;
-      //     case 2:
-      //       transform = "scale(1) translate(0px, 0px)";
-      //       break;
-      //     default:
-      //       transform = "scale(1) translate(0px, 0px)";
-      //   }
-      //   image2.style("transform", transform);
-      // }
+        let transform;
+        switch (step) {
+          case 5:
+            transform = "scale(3.5) translate(-10px, 0px)";
+            break;
+          case 6:
+            transform = "scale(3) translate(-20px, 50px)";
+            break;
+          case 7:
+            transform = "scale(3) translate(-20px, 120px)";
+            break;
+          case 8:
+            transform = "scale(1) translate(0px, 0px)";
+            break;
+          default:
+            transform = "scale(1) translate(0px, 0px)";
+        }
+        image2.style("transform", transform);
+      }
       function init2() {
         const steps2 = d3.selectAll("#scroll-2 .step-2");
 
@@ -518,7 +684,7 @@
           })
           .onStepEnter((response) => {
             steps2.classed("is-active", (d, i) => i === response.index);
-            // zoom2(response.index);
+            zoom2(response.index);
             updateAnomalies(response.index);
           });
 
@@ -528,6 +694,10 @@
       // kick it off
       init2();
     </script>
+
+    <div class="main-article">
+      <div class="para">uhhhh this is a PLACEHOLDER!!!</div>
+    </div>
 
     <script src="scripts/totalburnedarea.js"></script>
     <script src="scripts/burnarea2025.js"></script>
