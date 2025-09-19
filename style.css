@@ -80,7 +80,7 @@ body {
   max-width: 30rem;
   position: relative;
   margin: 0 auto;
-  z-index: 4;
+  z-index: 5;
   pointer-events: visible;
   bottom: 50vh;
 }
@@ -112,7 +112,7 @@ body {
   transition: transform 0.6s ease, transform-origin 0.6s ease;
   opacity: 1;
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.694);
+  background-color: rgb(255, 255, 255);
 }
 
 #scroll-1::after {

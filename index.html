@@ -66,8 +66,8 @@
             By the end of March, Wales had lost more land to fire than all the
             other UK nations combined. <br />
             <br />
-            Around 4,700 hectares, almost the size of Cardiff, had burned in
-            just one month. <br />
+            Around 4,700 hectares, an area comparable to 6,700 football pitches,
+            had burned in just one month. <br />
             <br />
             And, this was only the beginning.
           </p>
@@ -85,7 +85,8 @@
         <div class="step" data-step="6">
           <p>
             One of the largest UK wildfires this year broke out in Ystard Fflur,
-            burning for three days. As of April 8, the cause remains unknown.
+            burning for three days. <br />
+            <br />As of April 8, the cause remains unknown.
           </p>
         </div>
         <div class="step" data-step="7">
@@ -272,11 +273,11 @@
 
         setTimeout(() => {
           addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
-        }, 2500);
+        }, 1000);
 
         setTimeout(() => {
           addRectHighlight(step); // Use addCircle, addPulsingCircle, or addRectHighlight
-        }, 2500);
+        }, 1000);
       }
 
       function init1() {
@@ -363,8 +364,8 @@
       </div>
       <div class="source-text">
         <p>
-          As of 1 July 2025. EFFIS only maps fires that are approximately 30ha
-          or larger. <br />
+          Note: As of 1 July 2025. EFFIS only maps fires that are approximately
+          30ha or larger. <br />
           Source: European Forest Fire Information System (<a
             href="https://forest-fire.emergency.copernicus.eu"
             target="_blank"
@@ -388,7 +389,7 @@
                 target="_blank"
                 >EFFIS</a
               >).
-            </p>
+            </p>s
           </div>
         </div> -->
 
@@ -622,7 +623,6 @@
 
             d3.select(".l2011").transition().style("opacity", 0);
             d3.select(".l2012").transition().style("opacity", 0);
-
             break;
 
           case 8:
@@ -648,7 +648,16 @@
             d3.select(".topright").transition().style("opacity", 0);
             d3.select(".bottomleft").transition().style("opacity", 0);
             d3.select(".bottomright").transition().style("opacity", 0);
-
+            d3.select(".l2011").transition().style("opacity", 0);
+            d3.select(".l2012").transition().style("opacity", 0);
+            d3.select(".l2018").transition().style("opacity", 0);
+            d3.select(".l2019").transition().style("opacity", 0);
+            d3.select(".l2021").transition().style("opacity", 0);
+            d3.select(".l2022").transition().style("opacity", 0);
+            d3.select(".l2024").transition().style("opacity", 0);
+            d3.select(".l2025").transition().style("opacity", 0);
+            d3.select(".l1913").transition().style("opacity", 0);
+            d3.select(".l1914").transition().style("opacity", 0);
             break;
         }
       }
@@ -701,10 +710,10 @@
     <div class="main-article">
       <div class="source-text">
         <p>
-          As of 1 August 2025.<br />
-          All values are compared to the 1991–2020 average. Negative anomalies
-          before 1991 indicate years cooler than the modern normal. <br />
-          Source: Met Office National Climate Information Centre (<a
+          Note: As of 1 August 2025. All values are compared to the 1991–2020
+          average. Negative anomalies before 1991 indicate years cooler than the
+          modern normal. <br />Source: Met Office National Climate Information
+          Centre (<a
             href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
             target="_blank"
             >Climate Data</a
