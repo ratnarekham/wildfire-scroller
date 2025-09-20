@@ -218,8 +218,7 @@
       legendRow
         .append("text")
         .attr("x", 15)
-        .attr("y", 8)
-        .attr("dy", "1.2 rem")
+        .attr("y", 10)
         .text(country)
         .attr("font-size", "14px");
     });

@@ -108,13 +108,13 @@
       .style("opacity", 0)
       .attr("transform", `translate(0,${height})`)
       .call(d3.axisBottom(x))
-      .call((g) => g.selectAll(".tick text").attr("font-size", "14px"));
+      .call((g) => g.selectAll(".tick text").attr("font-size", "0.8rem"));
 
     g.append("g")
       .attr("class", "y-axis")
       .style("opacity", 0)
       .call(d3.axisLeft(y))
-      .call((g) => g.selectAll(".tick text").attr("font-size", "14px"));
+      .call((g) => g.selectAll(".tick text").attr("font-size", "0.8rem"));
 
     // Labels
     g.append("text")

@@ -238,3 +238,83 @@ body {
   color: #555;
   padding: 10px;
 }
+
+/* responsive */
+
+/* Tablets and small laptops */
+@media (max-width: 1024px) {
+  .image-container-1 {
+    gap: 100px;
+    margin-top: 10vh;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .scroll-header,
+  .sticky-source,
+  .main-article {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .headline {
+    font-size: 2.5rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+  .image-container-1 {
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 5vh;
+    align-items: center;
+  }
+
+  .image-container-1 img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .image-container-2 {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .scroll-text,
+  .scroll-text-2,
+  .step,
+  .step-2 {
+    padding: 0.8rem;
+    margin-bottom: 40vh;
+    font-size: 0.95rem;
+  }
+
+  .scroll-header,
+  .sticky-source,
+  .main-article {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .headline {
+    font-size: 2rem;
+    padding: 5px;
+  }
+
+  .para {
+    font-size: 1rem;
+  }
+
+  .sub {
+    font-size: 1.1rem;
+  }
+
+  .chart-title {
+    font-size: 18px;
+  }
+
+  .chart-subtitle {
+    font-size: 14px;
+  }
+}

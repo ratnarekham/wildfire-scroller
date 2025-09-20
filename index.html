@@ -46,7 +46,7 @@
             That day, fires were burning in atleast 19 different locations.
             <br />
             <br />
-            Two of them emitted smoke visible from space.
+            Two of them were visible from space.
           </p>
         </div>
         <div class="step" data-step="2">
@@ -69,23 +69,25 @@
             Around 4,700 hectares, an area comparable to 6,700 football pitches,
             had burned in just one month. <br />
             <br />
-            And, this was only the beginning.
+            And this was only the beginning.
           </p>
         </div>
         <div class="step" data-step="5">
           <p>
             April turned out to be the worst month on record for land burned.<br />
             <br />
-            On a rare, cloudless day
+            Burnt area doubled to nearly 8000 hectares, more than half of the
+            area of the capital city, Cardiff, in this month.<br /><br />
+            This rare cloudless view of Wales was captured on
             <span style="background-color: rgb(248, 140, 234)">April 5th</span>,
-            satellites recorded fires in atleast four different places around
-            Wales.
+            when satellites recorded fires in atleast four different places
+            across the country.
           </p>
         </div>
         <div class="step" data-step="6">
           <p>
-            One of the largest UK wildfires this year broke out in Ystard Fflur,
-            burning for three days. <br />
+            One of the largest wildfires in the UK this year broke out in Ystard
+            Fflur, burning for three days. <br />
             <br />As of April 8, the cause remains unknown.
           </p>
         </div>
@@ -94,18 +96,23 @@
             More than a month later, on
             <span style="background-color: rgb(153, 140, 248)">May 15th</span>,
             the scars of those fires were still clearly visible from space.
+            <br />
+            <br />
+            This month, burnt area reduced to less than 200 hectares, about 4
+            times the size of Principality stadium.
           </p>
         </div>
         <div class="step" data-step="8">
           <p>
-            What Wales experienced in 2025 was unprecedented. <br />
+            But what Wales experienced this year was unprecedented. <br />
             <br />
+            Especially after last year's exceptionally wet weather. <br /><br />
             The UK as a whole recorded its highest burnt area since recording
             began in 2012.
           </p>
         </div>
         <div class="step" data-step="9">
-          <p>What does this mean for the future of Wales?</p>
+          <p>Why was this year so devastating? And is this the new normal?</p>
         </div>
       </div>
     </section>
@@ -125,10 +132,10 @@
         // circle highlights
         switch (step) {
           case 2:
-            circleData = { cx: "13.7%", cy: "47%", r: 10, color: "pink" };
+            circleData = { cx: "13.7%", cy: "47%", r: 8, color: "pink" };
             break;
           case 3:
-            circleData = { cx: "15.5%", cy: "21%", r: 10, color: "pink" };
+            circleData = { cx: "15.5%", cy: "21%", r: 8, color: "pink" };
             break;
           default:
             return;
@@ -334,6 +341,27 @@
         heatwaves according to the MET Office. Heatwaves dry out vegetation,
         making it more flammable. <br />
       </div>
+      <div class="sub">When do fires usually occur?</div>
+      <div class="charts" id="2">
+        <div class="chart-title">
+          Grassland, Woodland and Crop fires per month (2020 - 2025)
+        </div>
+        <!-- <div class="chart-subtitle">subtitle if needed.</div> -->
+        <div id="firespermonth"></div>
+      </div>
+      <div class="source-text">
+        <p>
+          As of 1 July 2025. Fires counted in the chart are both accidental and
+          deliberate and include . <br />
+          Source: North Wales, South Wales, and Mid and West Wales Fire and
+          Rescue Services (<a
+            href="https://statswales.gov.wales/Catalogue/Community-Safety-and-Social-Inclusion/Community-Safety/Fire-Incidents/Fires-and-False-Alarms/primaryandsecondarygrasslandwoodlandandcropfires-by-month-financialyear"
+            target="_blank"
+            >StatsWales</a
+          >).
+        </p>
+      </div>
+
       <div class="sub">Successive heatwaves 'shocked' the system.</div>
       <div class="para">
         The multiple heatwaves have "shocked the system," says Dr. Gareth Clay,
@@ -376,27 +404,27 @@
 
       <br />
 
-      <!-- <div class="charts" id="2">
-          <div class="chart-title">Burnt Area Per Month in 2025</div>
-          <div class="chart-subtitle">April saw the largest burnt area.</div>
-          <div id="burnedarea2025"></div>
-          <div class="source-text">
-            <p>
-              As of 1 July 2025. EFFIS only maps fires that are approximately
-              30ha or larger. <br />
-              Source: European Forest Fire Information System (<a
-                href="https://forest-fire.emergency.copernicus.eu"
-                target="_blank"
-                >EFFIS</a
-              >).
-            </p>s
-          </div>
-        </div> -->
-
       <div class="para">
         "The challenge ahead is integrating fire science, data, and local
         knowledge to improve prediction, management, and prevention—this is
         vital as wildfires become a more frequent reality."
+      </div>
+
+      <div class="sub">Fires are behaving unpredictably.</div>
+
+      <div class="sub">
+        Yet it's not just the scale that's unsettling experts - it's the way
+        fires behave once they ignite.
+      </div>
+
+      <div class="sub">
+        Are we having more whiplash years? Does 2024 being very wet a reason for
+        why 2025 was so dry?
+      </div>
+
+      <div class="sub">
+        As the embers cool, the question remains: is this the start of a
+        challenging new normal for Wales?
       </div>
     </div>
 
@@ -452,10 +480,10 @@
               hot and wet </span
             >,
             <span style="background-color: rgba(255, 255, 0, 0.232)">
-              cold and dry</span
+              cool and dry</span
             >,
             <span style="background-color: rgba(0, 255, 60, 0.232)">
-              cold and wet</span
+              cool and wet</span
             >.
           </p>
         </div>
@@ -473,7 +501,7 @@
           <p>
             Other times they are sudden. <br />
             <br />
-            Here the weather flipped from hot and dry in 2011 to cold and wet in
+            Here the weather flipped from hot and dry in 2011 to cool and wet in
             2012.
           </p>
         </div>
@@ -504,16 +532,16 @@
       function updateAnomalies(step) {
         switch (step) {
           case 0:
-            // Show axes only
+            // start with axes
             d3.select(".x-axis").transition().style("opacity", 1);
             d3.select(".y-axis").transition().style("opacity", 1);
             d3.select(".xlabel").transition().style("opacity", 1);
             d3.select(".ylabel").transition().style("opacity", 1);
-            //quadrants
 
             break;
 
           case 1:
+            // ref lines
             d3.select(".v_line").transition().style("opacity", 1);
             d3.select(".h_line").transition().style("opacity", 1);
             d3.select(".averagelabel").transition().style("opacity", 0.2);
@@ -521,12 +549,14 @@
             break;
 
           case 2:
+            // dots!!
             d3.selectAll(".dot").transition().style("opacity", 1);
             d3.select(".xlabel1").transition().style("opacity", 1);
             d3.select(".ylabel1").transition().style("opacity", 1);
             break;
 
           case 3:
+            // colour quadrants
             d3.select(".topleft").transition().style("opacity", 0.2);
             d3.select(".topright").transition().style("opacity", 0.2);
             d3.select(".bottomleft").transition().style("opacity", 0.2);
@@ -534,6 +564,7 @@
             break;
 
           case 4:
+            // remove colours
             d3.select(".topleft").transition().style("opacity", 0);
             d3.select(".topright").transition().style("opacity", 0);
             d3.select(".bottomleft").transition().style("opacity", 0);
@@ -541,6 +572,7 @@
             break;
 
           case 5:
+            // 1913 and 1914
             const highlightYears1 = [1913, 1914];
 
             d3.selectAll(".dot")
@@ -559,6 +591,7 @@
             break;
 
           case 6:
+            // 2011 and 2012
             const highlightYears2 = [2011, 2012];
 
             d3.selectAll(".dot")
@@ -580,6 +613,7 @@
             break;
 
           case 7:
+            // recent year s
             const highlightYears3 = [2021, 2022];
             const highlightYears4 = [2018, 2019];
             const highlightYears5 = [2024, 2025];
@@ -626,12 +660,11 @@
             break;
 
           case 8:
+            // back to grey dots
             d3.selectAll(".dot")
               .transition()
               .attr("fill", "gray")
               .attr("r", 3)
-              .attr("stroke", 0)
-              .attr("stroke-width", 0)
               .attr("fill-opacity", 1)
               .style("opacity", 1);
 
@@ -658,7 +691,6 @@
             d3.select(".l2025").transition().style("opacity", 0);
             d3.select(".l1913").transition().style("opacity", 0);
             d3.select(".l1914").transition().style("opacity", 0);
-            break;
         }
       }
 
@@ -732,7 +764,7 @@
     </div>
 
     <script src="scripts/totalburnedarea.js"></script>
-    <script src="scripts/burnarea2025.js"></script>
     <script src="scripts/anomalies2025.js"></script>
+    <script src="scripts/firespermonth_wales.js"></script>
   </body>
 </html>
