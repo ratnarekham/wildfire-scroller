@@ -313,5 +313,27 @@
       .style("opacity", 0.7)
       .style("fill", "#000000ff")
       .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) + 140)
+      .attr("y", y(0) - 135)
+      .text("2023")
+      .attr("class", "l2023")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
+
+    g.append("text")
+      .attr("x", x(0) + 152)
+      .attr("y", y(0) - 72)
+      .text("2020")
+      .attr("class", "l2020")
+      .style("font-size", "5px")
+      .style("font-weight", "bold")
+      .style("opacity", 0.7)
+      .style("fill", "#000000ff")
+      .style("opacity", 0);
   });
 })();

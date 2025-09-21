@@ -241,28 +241,6 @@ body {
 
 /* responsive */
 
-/* Tablets and small laptops */
-@media (max-width: 1024px) {
-  .image-container-1 {
-    gap: 100px;
-    margin-top: 10vh;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .scroll-header,
-  .sticky-source,
-  .main-article {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-
-  .headline {
-    font-size: 2.5rem;
-  }
-}
-
-/* Mobile phones */
 @media (max-width: 768px) {
   .image-container-1 {
     flex-direction: column;
@@ -271,7 +249,8 @@ body {
     align-items: center;
   }
 
-  .image-container-1 img {
+  .image-container-1 img,
+  .image-container-2 img {
     max-width: 90%;
     height: auto;
   }
@@ -288,6 +267,12 @@ body {
     padding: 0.8rem;
     margin-bottom: 40vh;
     font-size: 0.95rem;
+  }
+
+  .scroll-graphic,
+  .scroll-graphic-2 {
+    flex-direction: column;
+    align-items: center;
   }
 
   .scroll-header,
@@ -308,6 +293,11 @@ body {
 
   .sub {
     font-size: 1.1rem;
+  }
+
+  .charts {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .chart-title {

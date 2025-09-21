@@ -242,6 +242,7 @@
         const image1 = d3.select(".image-container-1");
 
         let transform;
+        transform = "scale(0.5) translate(-1700px, 0px)";
         switch (step) {
           case 0:
             transform = "scale(1) translate(0px, 0px)"; //march 19
@@ -341,7 +342,14 @@
         heatwaves according to the MET Office. Heatwaves dry out vegetation,
         making it more flammable. <br />
       </div>
-      <div class="sub">When do fires usually occur?</div>
+      <div class="sub">When is the wildfire season?</div>
+      <div class="para">
+        Wildfires are not a specific category in fire and rescue authorities'
+        data. Instead, fires in grassland, woodland and crop fires are counted
+        in their incident recording system. <br />
+        <br />
+        Most fires happen in spring.
+      </div>
       <div class="charts" id="2">
         <div class="chart-title">
           Grassland, Woodland and Crop fires per month (2020 - 2025)
@@ -530,6 +538,29 @@
       const scroller2 = scrollama();
 
       function updateAnomalies(step) {
+        d3.select(".topleft").transition().style("opacity", 0);
+        d3.select(".topright").transition().style("opacity", 0);
+        d3.select(".bottomleft").transition().style("opacity", 0);
+        d3.select(".bottomright").transition().style("opacity", 0);
+        d3.select(".l2011").transition().style("opacity", 0);
+        d3.select(".l2012").transition().style("opacity", 0);
+        d3.select(".l2018").transition().style("opacity", 0);
+        d3.select(".l2019").transition().style("opacity", 0);
+        d3.select(".l2021").transition().style("opacity", 0);
+        d3.select(".l2022").transition().style("opacity", 0);
+        d3.select(".l2024").transition().style("opacity", 0);
+        d3.select(".l2025").transition().style("opacity", 0);
+        d3.select(".l1913").transition().style("opacity", 0);
+        d3.select(".l1914").transition().style("opacity", 0);
+        d3.select(".l2023").transition().style("opacity", 0);
+        d3.select(".l2020").transition().style("opacity", 0);
+        d3.selectAll(".dot")
+          .transition()
+          .attr("fill", "gray")
+          .attr("r", 3)
+          .attr("fill-opacity", 1)
+          .style("opacity", 1);
+
         switch (step) {
           case 0:
             // start with axes
@@ -614,10 +645,10 @@
 
           case 7:
             // recent year s
-            const highlightYears3 = [2021, 2022];
+            const highlightYears3 = [2022, 2023];
             const highlightYears4 = [2018, 2019];
             const highlightYears5 = [2024, 2025];
-            const wildfireyears = [2019, 2022, 2025];
+            const highlightYears6 = [2021, 2020];
 
             d3.selectAll(".dot")
               .transition()
@@ -626,13 +657,15 @@
                 if (highlightYears3.includes(d.year)) return "red";
                 if (highlightYears4.includes(d.year)) return "green";
                 if (highlightYears5.includes(d.year)) return "blue";
+                if (highlightYears6.includes(d.year)) return "yellow";
                 return "gray";
               })
               .attr("r", (d) => {
                 if (
                   highlightYears3.includes(d.year) ||
                   highlightYears4.includes(d.year) ||
-                  highlightYears5.includes(d.year)
+                  highlightYears5.includes(d.year) ||
+                  highlightYears6.includes(d.year)
                 )
                   return 4;
                 return 3;
@@ -642,7 +675,8 @@
                 if (
                   highlightYears3.includes(d.year) ||
                   highlightYears4.includes(d.year) ||
-                  highlightYears5.includes(d.year)
+                  highlightYears5.includes(d.year) ||
+                  highlightYears6.includes(d.year)
                 )
                   return 1;
                 return 0.2;
@@ -654,6 +688,8 @@
             d3.select(".l2022").transition().style("opacity", 1);
             d3.select(".l2024").transition().style("opacity", 1);
             d3.select(".l2025").transition().style("opacity", 1);
+            d3.select(".l2023").transition().style("opacity", 1);
+            d3.select(".l2020").transition().style("opacity", 1);
 
             d3.select(".l2011").transition().style("opacity", 0);
             d3.select(".l2012").transition().style("opacity", 0);
@@ -674,23 +710,9 @@
             d3.select(".l2022").transition().style("opacity", 0);
             d3.select(".l2024").transition().style("opacity", 0);
             d3.select(".l2025").transition().style("opacity", 0);
+            d3.select(".l2023").transition().style("opacity", 0);
+            d3.select(".l2020").transition().style("opacity", 0);
             break;
-
-          default:
-            d3.select(".topleft").transition().style("opacity", 0);
-            d3.select(".topright").transition().style("opacity", 0);
-            d3.select(".bottomleft").transition().style("opacity", 0);
-            d3.select(".bottomright").transition().style("opacity", 0);
-            d3.select(".l2011").transition().style("opacity", 0);
-            d3.select(".l2012").transition().style("opacity", 0);
-            d3.select(".l2018").transition().style("opacity", 0);
-            d3.select(".l2019").transition().style("opacity", 0);
-            d3.select(".l2021").transition().style("opacity", 0);
-            d3.select(".l2022").transition().style("opacity", 0);
-            d3.select(".l2024").transition().style("opacity", 0);
-            d3.select(".l2025").transition().style("opacity", 0);
-            d3.select(".l1913").transition().style("opacity", 0);
-            d3.select(".l1914").transition().style("opacity", 0);
         }
       }
 
