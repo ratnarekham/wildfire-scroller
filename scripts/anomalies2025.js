@@ -10,7 +10,7 @@
     .attr("height", height + margin.top + margin.bottom)
     .attr(
       "style",
-      "max-width: 700px; height: auto; overflow: visible; font: 0.8rem sans-serif; color: black; background-color: #ffffffff; align-items: center; margin-bottom: 0px;"
+      "max-width: 700px; height: auto; overflow: visible; z-index: 3; font: 0.8rem sans-serif; color: black; background-color: #ffffffff; align-items: center; margin-bottom: 0px;"
     );
 
   const g = svg

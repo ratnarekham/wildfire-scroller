@@ -109,7 +109,7 @@ body {
   justify-content: center;
   padding: 1rem;
   margin-bottom: 70vh;
-  transition: transform 0.6s ease, transform-origin 0.6s ease;
+  transition: transform 0.6s ease;
   opacity: 1;
   font-size: 1rem;
   background-color: rgb(255, 255, 255);
@@ -132,7 +132,7 @@ body {
   text-align: left;
   padding: 1rem;
   margin-bottom: 70vh;
-  transition: transform 0.6s ease, transform-origin 0.6s ease;
+  transition: transform 0.6s ease;
   opacity: 1;
   font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.694);
