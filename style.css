@@ -239,6 +239,13 @@ body {
   padding: 10px;
 }
 
+#photo {
+  object-fit: contain;
+  padding: 10px;
+  max-width: 700px;
+  text-align: center;
+}
+
 /* responsive */
 
 @media (max-width: 768px) {
