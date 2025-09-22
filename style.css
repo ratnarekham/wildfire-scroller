@@ -111,7 +111,7 @@ body {
   margin-bottom: 70vh;
   transition: transform 0.6s ease;
   opacity: 1;
-  font-size: 1rem;
+  font-size: 1.1rem;
   background-color: rgb(255, 255, 255);
 }
 
@@ -134,7 +134,7 @@ body {
   margin-bottom: 70vh;
   transition: transform 0.6s ease;
   opacity: 1;
-  font-size: 1rem;
+  font-size: 1.1rem;
   background-color: rgba(255, 255, 255, 0.694);
 }
 .scroll-header {
@@ -179,7 +179,7 @@ body {
   font-weight: 500;
   padding: 10px;
   line-height: 1.2;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .main-article {
@@ -209,14 +209,14 @@ body {
 }
 
 .chart-title {
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: left;
   padding-top: 10px;
   padding-bottom: 20px;
 }
 .chart-subtitle {
-  font-size: 16px;
+  font-size: 1.1rem;
   text-align: left;
   padding-bottom: 20px;
 }
@@ -226,7 +226,7 @@ body {
   background: white;
   border: 1px solid #aaa;
   padding: 6px 10px;
-  font-size: 12px;
+  font-size: 0.8rem;
   pointer-events: all;
   opacity: 0;
   z-index: 10;
@@ -308,10 +308,10 @@ body {
   }
 
   .chart-title {
-    font-size: 18px;
+    font-size: 1.2rem;
   }
 
   .chart-subtitle {
-    font-size: 14px;
+    font-size: 1.1rem;
   }
 }
