@@ -200,6 +200,14 @@ body {
   font-weight: bold;
 }
 
+.byline {
+  padding: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  padding-bottom: 20px;
+  color: #555;
+}
+
 .charts {
   text-align: center;
   padding: 10px;
