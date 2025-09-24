@@ -68,7 +68,7 @@
       .attr("y", yScale(0))
       .attr("width", xSubgroup.bandwidth())
       .attr("height", 0)
-      .attr("fill", (d) => (d.key === "2025" ? "#df0808ff" : "gray"))
+      .attr("fill", (d) => (d.key === "2025" ? "#df0808ff" : "#D3D3D3"))
       .style("mix-blend-mode", "multiply")
       .on("mouseover", function (event, d) {
         g.selectAll("rect").style("opacity", 0.3).style("stroke", null);
@@ -154,3 +154,5 @@
       .text((d) => d);
   }
 })();
+
+// NORMALIZE THE CHART FOR EVERY MONTH SO THAT THE PROPORTION OF FIRES IS CLEARER.
