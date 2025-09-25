@@ -39,7 +39,7 @@ body {
   padding: 20px;
   transition: transform 2s ease;
   overflow: visible;
-  width: auto;
+  width: 100%;
   position: relative;
   pointer-events: auto;
 }

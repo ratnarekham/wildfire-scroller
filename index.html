@@ -246,41 +246,52 @@
       function zoom1(step) {
         const image1 = d3.select(".image-container-1");
 
+        // detect small screens
+        const isSmallScreen = window.innerWidth < 768;
+
         let transform;
-        transform = "scale(0.5) translate(-1700px, 0px)";
-        switch (step) {
-          case 0:
-            transform = "scale(1) translate(0px, 0px)"; //march 19
-            break;
-          case 1:
-            transform = "scale(1.5) translate(230px, 0px)"; //march 19
-            break;
-          case 2:
-            transform = "scale(5.6) translate(415px, 25px)";
-            break;
-          case 3:
-            transform = "scale(5.6) translate(390px, 160px)";
-            break;
-          case 4:
-            transform = "scale(1.5) translate(230px, 0px)";
-            break;
-          case 5:
-            transform = "scale(1.5) translate(-550px, 0px)"; //april 5
-            break;
-          case 6:
-            transform = "scale(5.6) translate(-355px, -20px)";
-            break;
-          case 7:
-            transform = "scale(5.6) translate(-1085px, -20px)";
-            break;
-          case 8:
-            transform = "scale(1.5) translate(-1250px, 0px)"; // may 15
-            break;
-          case 9:
-            transform = "scale(0.5) translate(-1700px, 0px)";
-            break;
-          default:
-            transform = "scale(1) translate(0px, 0px)";
+        if (isSmallScreen) {
+          switch (step) {
+            case 1:
+              transform = "translate(20px, 0px)";
+              break;
+          }
+        } else {
+          transform = "scale(0.5) translate(-1700px, 0px)";
+          switch (step) {
+            case 0:
+              transform = "scale(1) translate(0px, 0px)"; //march 19
+              break;
+            case 1:
+              transform = "scale(1.5) translate(230px, 0px)"; //march 19
+              break;
+            case 2:
+              transform = "scale(5.6) translate(415px, 25px)";
+              break;
+            case 3:
+              transform = "scale(5.6) translate(390px, 160px)";
+              break;
+            case 4:
+              transform = "scale(1.5) translate(230px, 0px)";
+              break;
+            case 5:
+              transform = "scale(1.5) translate(-550px, 0px)"; //april 5
+              break;
+            case 6:
+              transform = "scale(5.6) translate(-355px, -20px)";
+              break;
+            case 7:
+              transform = "scale(5.6) translate(-1085px, -20px)";
+              break;
+            case 8:
+              transform = "scale(1.5) translate(-1250px, 0px)"; // may 15
+              break;
+            case 9:
+              transform = "scale(0.5) translate(-1700px, 0px)";
+              break;
+            default:
+              transform = "scale(1) translate(0px, 0px)";
+          }
         }
         image1.style("transform", transform);
 
@@ -371,10 +382,10 @@
         <br />All it took was a single spark to set large areas ablaze.
       </div>
       <div class="charts" id="2">
-        <div class="chart-title">When is the wildfire season?</div>
-        <div class="chart-subtitle">
+        <div class="chart-title">
           Grassland, Woodland and Crop fires per month (2020 - 2025)
         </div>
+        <!-- <div class="chart-subtitle"></div> -->
         <div id="firespermonth"></div>
       </div>
       <div class="source-text">
@@ -415,10 +426,7 @@
         <div class="chart-title">
           Burnt Area in the United Kingdom (2015 - 2025)
         </div>
-        <!-- <div class="chart-subtitle">
-          This year saw the UK experience record high burnt area. Wales and
-          Scotland also reached record levels.
-        </div> -->
+        <!-- <div class="chart-subtitle"></div> -->
         <div id="totalburnedarea_chart"></div>
       </div>
       <div class="source-text">
@@ -837,17 +845,12 @@
       <img
         id="photo"
         src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/photo.jpg"
-        alt="Fallen tree in area of devastation from wild fires in Welsh mountains, Rhyd Ddu, Caernarfon, Snowdonia National Park, Wales"
+        alt="A fire in Y Fron in 2018"
       />
       <div class="source-text">
         <p>
-          Fallen tree in area of devastation from wild fires in Welsh mountains,
-          Rhyd Ddu, Caernarfon, Snowdonia National Park, Wales<br />
-          Credit: Philip Silverman (<a
-            href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
-            target="_blank"
-            >Climate Data</a
-          >)
+          A fire in Y Fron in 2018<br />
+          Credit: Neil Mark Thomas. Free to use under the Unsplash License
         </p>
       </div>
       <div class="para">
@@ -868,10 +871,6 @@
         Clay says that after most fires, land is left to recover on its own,
         with little active intervention. Only the most severe burns get specific
         restoration efforts.
-        <br />
-        <br />
-        "Agencies like NRW (Natural Resources Wales) might target restoration
-        efforts such as replanting or stabilising slopes." he adds.
         <br />
         <br />
         McNorton notes that indigenous fire practices around the world show that
