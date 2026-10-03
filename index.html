@@ -1,909 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Why Wales is burning more than ever</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <section id="scroll-1">
-      <div class="scroll-graphic">
-        <div class="image-container-1">
-          <img
-            id="img-1"
-            src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/march_19.png"
-            alt="March 19 Image"
-          />
-          <img
-            id="img-2"
-            src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/april_5.png"
-            alt="April 5 Image"
-          />
-          <img
-            id="img-3"
-            src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/may_15.png"
-            alt="May 15 Image"
-          />
-        </div>
-      </div>
 
-      <div class="scroll-text">
-        <div class="step" data-step="1">
-          <p>
-            2025 has brought Wales its most extreme wildfire season on
-            record.<br />
-            <br />
-            But just how bad has it been? <br />
-          </p>
-        </div>
-        <div class="step" data-step="1">
-          <p>
-            On
-            <span style="background-color: rgb(218, 248, 140)">March 19</span>
-            satellites captured this view of Wales from space.<br />
-            <br />
-            That day, fires were burning in atleast 19 different locations.
-            <br />
-            <br />
-            Two of them were visible from space.
-          </p>
-        </div>
-        <div class="step" data-step="2">
-          <p>
-            Near the seaside town of Aberystwyth, a fire that had started the
-            day before was still burning.
-          </p>
-        </div>
-        <div class="step" data-step="3">
-          <p>
-            In the small village of Llanfairtalhaiarn, smoke stretched for miles
-            across the countryside.
-          </p>
-        </div>
-        <div class="step" data-step="4">
-          <p>
-            By the end of March, Wales had lost more land to fire than all the
-            other UK nations combined. <br />
-            <br />
-            More than 4,500 hectares, almost twice the size of Aberystwyth, had
-            burned in just one month. <br />
-            <br />
-            And this was only the beginning.
-          </p>
-        </div>
-        <div class="step" data-step="5">
-          <p>
-            April turned into the worst month this year, with 7200 hectares
-            burned, which is nearly half the size of Cardiff. <br />
-            <br />
-            This rare cloudless view of Wales was captured on
-            <span style="background-color: rgb(248, 140, 234)">April 5th</span>,
-            when satellites recorded fires in atleast four different places
-            across the country.
-          </p>
-        </div>
-        <div class="step" data-step="6">
-          <p>
-            One of the largest wildfires in the UK this year broke out near
-            Ystard Fflur, a small community in Mid West Wales, burning for three
-            days. <br />
-            <br />As of April 8, the cause remains unknown.
-          </p>
-        </div>
-        <div class="step" data-step="7">
-          <p>
-            By
-            <span style="background-color: rgb(153, 140, 248)">May 15th</span>,
-            the scars of those fires were still visible from space.
-            <br />
-            <br />
-            The flames had eased, with only 65 hectares burned, though the hot
-            weather carried on.
-          </p>
-        </div>
-        <div class="step" data-step="8">
-          <p>
-            What Wales experienced this year was unprecedented. <br />
-            <br />
-            Despite being much smaller than Scotland and England, Wales has the
-            second-highest burned area this year.<br /><br />
-            Across the country, 2025 marked the highest burnt area since
-            recording began in 2012.
-          </p>
-        </div>
-        <div class="step" data-step="9">
-          <p>
-            Why was this year so devastating? <br />
-            <br />
-            And is this a warning for what might come next?
-          </p>
-        </div>
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Wales is burning more than ever</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-    <script src="https://unpkg.com/scrollama"></script>
-    <script>
-      //scrollama setupp
-      const scroller1 = scrollama();
-
-      function addCircle(step) {
-        d3.selectAll(".zoom-circle").remove();
-
-        const container1 = d3.select(".image-container-1");
-        let circleData;
-
-        // circle highlights
-        switch (step) {
-          case 2:
-            circleData = { cx: "13.7%", cy: "47%", r: 8, color: "pink" };
-            break;
-          case 3:
-            circleData = { cx: "15.5%", cy: "21%", r: 8, color: "pink" };
-            break;
-          default:
-            return;
-        }
-        let svg = container1.select("svg.circle-overlay");
-        if (svg.empty()) {
-          svg = container1
-            .append("svg")
-            .attr("class", "circle-overlay")
-            .style("position", "absolute")
-            .style("top", "0")
-            .style("left", "0")
-            .style("width", "100%")
-            .style("height", "100%")
-            .style("pointer-events", "none")
-            .style("z-index", "10");
-        }
-
-        svg
-          .append("circle")
-          .attr("class", "zoom-circle")
-          .attr("cx", circleData.cx)
-          .attr("cy", circleData.cy)
-          .attr("r", 0)
-          .style("fill", "solid")
-          .attr("fill", circleData.color)
-          .attr("fill-opacity", 0.1)
-          .style("stroke", circleData.color)
-          .style("stroke-width", "0.5px")
-          .style("opacity", 0.1)
-          .transition()
-          .duration(500)
-          .attr("r", circleData.r)
-          .style("opacity", 1);
-      }
-
-      // rectangle highlights
-      function addRectHighlight(step) {
-        d3.selectAll(".zoom-highlight").remove();
-
-        const container1 = d3.select(".image-container-1");
-        let rectData;
-
-        switch (step) {
-          // case 3:
-          //   rectData = { x: "17%", y: "75%", width: "2%", height: "5%", color: "pink" };
-          //   break;
-          case 6:
-            rectData = {
-              x: "65.5%",
-              y: "52%",
-              width: "2%",
-              height: "6%",
-              color: "pink",
-            };
-            break;
-          case 7:
-            rectData = {
-              x: "115.3%",
-              y: "51.5%",
-              width: "2%",
-              height: "6%",
-              color: "pink",
-            };
-            break;
-          default:
-            return;
-        }
-        let svg = container1.select("svg.highlight-overlay");
-        if (svg.empty()) {
-          svg = container1
-            .append("svg")
-            .attr("class", "highlight-overlay")
-            .style("position", "absolute")
-            .style("top", "0")
-            .style("left", "0")
-            .style("width", "100%")
-            .style("height", "100%")
-            .style("pointer-events", "none")
-            .attr("overflow", "visible")
-            .style("z-index", "10");
-        }
-        svg
-          .append("rect")
-          .attr("class", "zoom-highlight")
-          .attr("x", rectData.x)
-          .attr("y", rectData.y)
-          .attr("width", "0%")
-          .attr("height", "0%")
-          .style("fill", "solid")
-          .attr("fill", rectData.color)
-          .attr("fill-opacity", 0.1)
-          .style("stroke", rectData.color)
-          .style("stroke-width", "0.5px")
-          .style("opacity", 0)
-          .transition()
-          .duration(800)
-          .attr("width", rectData.width)
-          .attr("height", rectData.height)
-          .style("opacity", 1);
-      }
-      // zooming in
-      function zoom1(step) {
-        const image1 = d3.select(".image-container-1");
-
-        // detect small screens
-        const isSmallScreen = window.innerWidth < 768;
-
-        let transform;
-        if (isSmallScreen) {
-          switch (step) {
-            case 1:
-              transform = "translate(20px, 0px)";
-              break;
-          }
-        } else {
-          transform = "scale(0.5) translate(-1700px, 0px)";
-          switch (step) {
-            case 0:
-              transform = "scale(1) translate(0px, 0px)"; //march 19
-              break;
-            case 1:
-              transform = "scale(1.5) translate(230px, 0px)"; //march 19
-              break;
-            case 2:
-              transform = "scale(5.6) translate(415px, 25px)";
-              break;
-            case 3:
-              transform = "scale(5.6) translate(390px, 160px)";
-              break;
-            case 4:
-              transform = "scale(1.5) translate(230px, 0px)";
-              break;
-            case 5:
-              transform = "scale(1.5) translate(-550px, 0px)"; //april 5
-              break;
-            case 6:
-              transform = "scale(5.6) translate(-355px, -20px)";
-              break;
-            case 7:
-              transform = "scale(5.6) translate(-1085px, -20px)";
-              break;
-            case 8:
-              transform = "scale(1.5) translate(-1250px, 0px)"; // may 15
-              break;
-            case 9:
-              transform = "scale(0.5) translate(-1700px, 0px)";
-              break;
-            default:
-              transform = "scale(1) translate(0px, 0px)";
-          }
-        }
-        image1.style("transform", transform);
-
-        setTimeout(() => {
-          addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
-        }, 1000);
-
-        setTimeout(() => {
-          addRectHighlight(step); // Use addCircle, addPulsingCircle, or addRectHighlight
-        }, 1000);
-      }
-
-      function init1() {
-        const steps1 = d3.selectAll("#scroll-1 .step");
-
-        scroller1
-          .setup({
-            step: "#scroll-1 .step",
-            offset: 0.5,
-            debug: false,
-          })
-          .onStepEnter((response) => {
-            steps1.classed("is-active", (d, i) => i === response.index);
-            zoom1(response.index);
-          });
-
-        window.addEventListener("resize", scroller1.resize);
-      }
-
-      // kick it off
-      init1();
-    </script>
-
-    <div class="main-article">
-      <div class="headline">Why Wales is burning more than ever</div>
-      <div class="byline">
-        By Ratna Rekha Manukonda<br />
-        September 25, 2025
-      </div>
-      <div class="para">
-        This spring in Wales was less about blooming flowers and more about
-        burning fields. Wildfires, however, have long been part of the Welsh
-        landscape.
-        <br />
-        <br />
-        From pine trees to bracken ferns, fires have long shaped the land and
-        ecosystems as we know them today. But this year's fires looked nothing
-        like those of the past. <br />
-        <br />
-        They were larger, faster and harder to control than anything seen in
-        recent memory. What changed? <br />
-      </div>
-      <div class="sub">
-        Wildfire season is starting earlier and lasting longer.
-      </div>
-      <div class="para">
-        Wildfire season in Wales is now beginning earlier than expected, with
-        fires common in February and March rather than late spring or summer.
-        <br />
-        <br />
-        Joe McNorton, a fire scientist at the European Centre for Medium-Range
-        Weather Forecasts, explains that the season is extending on both ends.
-        Hot and dry conditions are lasting long after plants would normally
-        become green and resistant to burning.
-        <br />
-        <br />
-        Scientists describe hot, dry, and windy periods as 'high fire weather.'
-        On such days, fires spread rapidly across the landscape. And they expect
-        more of these days in the future.
-        <br />
-        <br />
-        But McNorton points out that dangerous weather doesn’t automatically
-        lead to more fires. If vegetation has already burned earlier in the
-        year, there may be little fuel left to ignite
-        <br />
-        <br />
-        Spring fires themselves are not unusual in Wales. Traditionally,
-        controlled burns cleared dead grass, making way for new shoots for
-        livestock to graze on. The spring showers would help to put them out.
-        <br />
-        <br />
-        What made this year different was the weather. Last year's heavy rains
-        left behind thick growth of vegetation. Then, according to the Met
-        Office, 2025 brought the warmest and driest spring on record. With heat,
-        dry winds, and no rain, that extra vegetation turned into fuel.
-        <br />
-        <br />All it took was a single spark to set large areas ablaze.
-      </div>
-      <div class="charts" id="2">
-        <div class="chart-title">
-          Grassland, Woodland and Crop fires per month (2020 - 2025)
-        </div>
-        <!-- <div class="chart-subtitle"></div> -->
-        <div id="firespermonth"></div>
-      </div>
-      <div class="source-text">
-        <p>
-          As of 1 July 2025. Fires counted in the chart are both accidental and
-          deliberate. <br />
-          Source: North Wales, South Wales, and Mid and West Wales Fire and
-          Rescue Services (<a
-            href="https://statswales.gov.wales/Catalogue/Community-Safety-and-Social-Inclusion/Community-Safety/Fire-Incidents/Fires-and-False-Alarms/primaryandsecondarygrasslandwoodlandandcropfires-by-month-financialyear"
-            target="_blank"
-            >StatsWales</a
-          >)
-        </p>
-      </div>
-
-      <div class="sub">Burnt area isn't the full story.</div>
-      <div class="para">
-        Globally, the total land burned by wildfires is actually going down. At
-        first glance, this might sound like good news. But scientists warn it
-        gives a misleading picture.
-        <br />
-        <br />
-        Douglas Kelley, wildfire scientist at the UK Centre for Ecology and
-        Hydrology, says that while overall burnt area is shrinking, the size and
-        intensity of the largest fires are increasing.
-        <br />
-        <br />
-        "We're seeing fewer small burns but more extreme events," he says.
-        <br />
-        <br />
-        Gareth Clay, professor of geography at the University of Manchester,
-        adds that burnt area alone misses the full story. A small fire may not
-        cover much ground, but it can still close roads, choke valleys with
-        smoke, or threaten homes. These local impacts don't always show up in
-        national statistics.
-      </div>
-      <div class="charts" id="1">
-        <div class="chart-title">
-          Burnt Area in the United Kingdom (2015 - 2025)
-        </div>
-        <!-- <div class="chart-subtitle"></div> -->
-        <div id="totalburnedarea_chart"></div>
-      </div>
-      <div class="source-text">
-        <p>
-          Note: As of 1 July 2025. EFFIS only maps fires that are approximately
-          30ha or larger. <br />
-          Source: European Forest Fire Information System (<a
-            href="https://forest-fire.emergency.copernicus.eu"
-            target="_blank"
-            >EFFIS</a
-          >)
-        </p>
-      </div>
-      <br />
-      <div class="para">
-        Experts also stress that fire behaviour depends on the land’s history.
-        <br />
-        <br />
-        Several years of plant growth may build up enough fuel for an intense
-        blaze, while human actions such as land management or suppression
-        efforts can change how fires spread. Clay says this is why weather
-        patterns and burnt area don’t always match.
-        <br />
-        <br />
-        These patterns of fire and fuel are tied to wider changes in weather.
-        And in Wales, those changes are coming in sharp swings.
-        <br />
-        <br />
-        Scientists are paying close attention to swings in weather from one year
-        to the next. They call this "climate whiplash".
+<body>
+  <section id="scroll-1">
+    <div class="scroll-graphic">
+      <div class="image-container-1">
+        <img id="img-1"
+          src="https://wsrv.nl/?url=https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/march_19.png&h=3860&format=webp"
+          alt="March 19 Image" />
+        <img id="img-2"
+          src="https://wsrv.nl/?url=https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/april_5.png&h=3860&format=webp"
+          alt="April 5 Image" />
+        <img id="img-3"
+          src="https://wsrv.nl/?url=https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/may_15.png&h=3860&format=webp"
+          alt="May 15 Image" />
       </div>
     </div>
-    <!-- <div class="para">
+
+    <div class="scroll-text">
+      <div class="step" data-step="1">
+        <p>
+          2025 has brought Wales its most extreme wildfire season on
+          record.<br />
+          <br />
+          But just how bad has it been? <br />
+        </p>
+      </div>
+      <div class="step" data-step="1">
+        <p>
+          On
+          <span style="background-color: rgb(218, 248, 140)">March 19</span>
+          satellites captured this view of Wales from space.<br />
+          <br />
+          That day, fires were burning in atleast 19 different locations.
+          <br />
+          <br />
+          Two of them were visible from space.
+        </p>
+      </div>
+      <div class="step" data-step="2">
+        <p>
+          Near the seaside town of Aberystwyth, a fire that had started the
+          day before was still burning.
+        </p>
+      </div>
+      <div class="step" data-step="3">
+        <p>
+          In the small village of Llanfairtalhaiarn, smoke stretched for miles
+          across the countryside.
+        </p>
+      </div>
+      <div class="step" data-step="4">
+        <p>
+          By the end of March, Wales had lost more land to fire than all the
+          other UK nations combined. <br />
+          <br />
+          More than 4,500 hectares, almost twice the size of Aberystwyth, had
+          burned in just one month. <br />
+          <br />
+          And this was only the beginning.
+        </p>
+      </div>
+      <div class="step" data-step="5">
+        <p>
+          April turned into the worst month this year, with 7200 hectares
+          burned, which is nearly half the size of Cardiff. <br />
+          <br />
+          This rare cloudless view of Wales was captured on
+          <span style="background-color: rgb(248, 140, 234)">April 5th</span>,
+          when satellites recorded fires in atleast four different places
+          across the country.
+        </p>
+      </div>
+      <div class="step" data-step="6">
+        <p>
+          One of the largest wildfires in the UK this year broke out near
+          Ystard Fflur, a small community in Mid West Wales, burning for three
+          days. <br />
+          <br />As of April 8, the cause remains unknown.
+        </p>
+      </div>
+      <div class="step" data-step="7">
+        <p>
+          By
+          <span style="background-color: rgb(153, 140, 248)">May 15th</span>,
+          the scars of those fires were still visible from space.
+          <br />
+          <br />
+          The flames had eased, with only 65 hectares burned, though the hot
+          weather carried on.
+        </p>
+      </div>
+      <div class="step" data-step="8">
+        <p>
+          What Wales experienced this year was unprecedented. <br />
+          <br />
+          Despite being much smaller than Scotland and England, Wales has the
+          second-highest burned area this year.<br /><br />
+          Across the country, 2025 marked the highest burnt area since
+          recording began in 2012.
+        </p>
+      </div>
+      <div class="step" data-step="9">
+        <p>
+          Why was this year so devastating? <br />
+          <br />
+          And is this a warning for what might come next?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <script>
+    //scrollama setupp
+    const scroller1 = scrollama();
+
+    function addCircle(step) {
+      d3.selectAll(".zoom-circle").remove();
+
+      const container1 = d3.select(".image-container-1");
+      let circleData;
+
+      // circle highlights
+      switch (step) {
+        case 2:
+          circleData = { cx: "13.7%", cy: "47%", r: 8, color: "pink" };
+          break;
+        case 3:
+          circleData = { cx: "15.5%", cy: "21%", r: 8, color: "pink" };
+          break;
+        default:
+          return;
+      }
+      let svg = container1.select("svg.circle-overlay");
+      if (svg.empty()) {
+        svg = container1
+          .append("svg")
+          .attr("class", "circle-overlay")
+          .style("position", "absolute")
+          .style("top", "0")
+          .style("left", "0")
+          .style("width", "100%")
+          .style("height", "100%")
+          .style("pointer-events", "none")
+          .style("z-index", "10");
+      }
+
+      svg
+        .append("circle")
+        .attr("class", "zoom-circle")
+        .attr("cx", circleData.cx)
+        .attr("cy", circleData.cy)
+        .attr("r", 0)
+        .style("fill", "solid")
+        .attr("fill", circleData.color)
+        .attr("fill-opacity", 0.1)
+        .style("stroke", circleData.color)
+        .style("stroke-width", "0.5px")
+        .style("opacity", 0.1)
+        .transition()
+        .duration(500)
+        .attr("r", circleData.r)
+        .style("opacity", 1);
+    }
+
+    // rectangle highlights
+    function addRectHighlight(step) {
+      d3.selectAll(".zoom-highlight").remove();
+
+      const container1 = d3.select(".image-container-1");
+      let rectData;
+
+      switch (step) {
+        // case 3:
+        //   rectData = { x: "17%", y: "75%", width: "2%", height: "5%", color: "pink" };
+        //   break;
+        case 6:
+          rectData = {
+            x: "65.5%",
+            y: "52%",
+            width: "2%",
+            height: "6%",
+            color: "pink",
+          };
+          break;
+        case 7:
+          rectData = {
+            x: "115.3%",
+            y: "51.5%",
+            width: "2%",
+            height: "6%",
+            color: "pink",
+          };
+          break;
+        default:
+          return;
+      }
+      let svg = container1.select("svg.highlight-overlay");
+      if (svg.empty()) {
+        svg = container1
+          .append("svg")
+          .attr("class", "highlight-overlay")
+          .style("position", "absolute")
+          .style("top", "0")
+          .style("left", "0")
+          .style("width", "100%")
+          .style("height", "100%")
+          .style("pointer-events", "none")
+          .attr("overflow", "visible")
+          .style("z-index", "10");
+      }
+      svg
+        .append("rect")
+        .attr("class", "zoom-highlight")
+        .attr("x", rectData.x)
+        .attr("y", rectData.y)
+        .attr("width", "0%")
+        .attr("height", "0%")
+        .style("fill", "solid")
+        .attr("fill", rectData.color)
+        .attr("fill-opacity", 0.1)
+        .style("stroke", rectData.color)
+        .style("stroke-width", "0.5px")
+        .style("opacity", 0)
+        .transition()
+        .duration(800)
+        .attr("width", rectData.width)
+        .attr("height", rectData.height)
+        .style("opacity", 1);
+    }
+    // zooming in
+    function zoom1(step) {
+      const image1 = d3.select(".image-container-1");
+
+      // detect small screens
+      const isSmallScreen = window.innerWidth < 768;
+
+      let transform;
+      if (isSmallScreen) {
+        switch (step) {
+          case 1:
+            transform = "translate(20px, 0px)";
+            break;
+        }
+      } else {
+        transform = "scale(0.5) translate(-1700px, 0px)";
+        switch (step) {
+          case 0:
+            transform = "scale(1) translate(0px, 0px)"; //march 19
+            break;
+          case 1:
+            transform = "scale(1.5) translate(230px, 0px)"; //march 19
+            break;
+          case 2:
+            transform = "scale(5.6) translate(415px, 25px)";
+            break;
+          case 3:
+            transform = "scale(5.6) translate(390px, 160px)";
+            break;
+          case 4:
+            transform = "scale(1.5) translate(230px, 0px)";
+            break;
+          case 5:
+            transform = "scale(1.5) translate(-550px, 0px)"; //april 5
+            break;
+          case 6:
+            transform = "scale(5.6) translate(-355px, -20px)";
+            break;
+          case 7:
+            transform = "scale(5.6) translate(-1085px, -20px)";
+            break;
+          case 8:
+            transform = "scale(1.5) translate(-1250px, 0px)"; // may 15
+            break;
+          case 9:
+            transform = "scale(0.5) translate(-1700px, 0px)";
+            break;
+          default:
+            transform = "scale(1) translate(0px, 0px)";
+        }
+      }
+      image1.style("transform", transform);
+
+      setTimeout(() => {
+        addCircle(step); // Use addCircle, addPulsingCircle, or addRectHighlight
+      }, 1000);
+
+      setTimeout(() => {
+        addRectHighlight(step); // Use addCircle, addPulsingCircle, or addRectHighlight
+      }, 1000);
+    }
+
+    function init1() {
+      const steps1 = d3.selectAll("#scroll-1 .step");
+
+      scroller1
+        .setup({
+          step: "#scroll-1 .step",
+          offset: 0.5,
+          debug: false,
+        })
+        .onStepEnter((response) => {
+          steps1.classed("is-active", (d, i) => i === response.index);
+          zoom1(response.index);
+        });
+
+      window.addEventListener("resize", scroller1.resize);
+    }
+
+    // kick it off
+    init1();
+  </script>
+
+  <div class="main-article">
+    <div class="headline">Why Wales is burning more than ever</div>
+    <div class="byline">
+      By Ratna Rekha Manukonda<br />
+      September 25, 2025
+    </div>
+    <div class="para">
+      This spring in Wales was less about blooming flowers and more about
+      burning fields. Wildfires, however, have long been part of the Welsh
+      landscape.
+      <br />
+      <br />
+      From pine trees to bracken ferns, fires have long shaped the land and
+      ecosystems as we know them today. But this year's fires looked nothing
+      like those of the past. <br />
+      <br />
+      They were larger, faster and harder to control than anything seen in
+      recent memory. What changed? <br />
+    </div>
+    <div class="sub">
+      Wildfire season is starting earlier and lasting longer.
+    </div>
+    <div class="para">
+      Wildfire season in Wales is now beginning earlier than expected, with
+      fires common in February and March rather than late spring or summer.
+      <br />
+      <br />
+      Joe McNorton, a fire scientist at the European Centre for Medium-Range
+      Weather Forecasts, explains that the season is extending on both ends.
+      Hot and dry conditions are lasting long after plants would normally
+      become green and resistant to burning.
+      <br />
+      <br />
+      Scientists describe hot, dry, and windy periods as 'high fire weather.'
+      On such days, fires spread rapidly across the landscape. And they expect
+      more of these days in the future.
+      <br />
+      <br />
+      But McNorton points out that dangerous weather doesn’t automatically
+      lead to more fires. If vegetation has already burned earlier in the
+      year, there may be little fuel left to ignite
+      <br />
+      <br />
+      Spring fires themselves are not unusual in Wales. Traditionally,
+      controlled burns cleared dead grass, making way for new shoots for
+      livestock to graze on. The spring showers would help to put them out.
+      <br />
+      <br />
+      What made this year different was the weather. Last year's heavy rains
+      left behind thick growth of vegetation. Then, according to the Met
+      Office, 2025 brought the warmest and driest spring on record. With heat,
+      dry winds, and no rain, that extra vegetation turned into fuel.
+      <br />
+      <br />All it took was a single spark to set large areas ablaze.
+    </div>
+    <div class="charts" id="2">
+      <div class="chart-title">
+        Grassland, Woodland and Crop fires per month (2020 - 2025)
+      </div>
+      <!-- <div class="chart-subtitle"></div> -->
+      <div id="firespermonth"></div>
+    </div>
+    <div class="source-text">
+      <p>
+        As of 1 July 2025. Fires counted in the chart are both accidental and
+        deliberate. <br />
+        Source: North Wales, South Wales, and Mid and West Wales Fire and
+        Rescue Services (<a
+          href="https://statswales.gov.wales/Catalogue/Community-Safety-and-Social-Inclusion/Community-Safety/Fire-Incidents/Fires-and-False-Alarms/primaryandsecondarygrasslandwoodlandandcropfires-by-month-financialyear"
+          target="_blank">StatsWales</a>)
+      </p>
+    </div>
+
+    <div class="sub">Burnt area isn't the full story.</div>
+    <div class="para">
+      Globally, the total land burned by wildfires is actually going down. At
+      first glance, this might sound like good news. But scientists warn it
+      gives a misleading picture.
+      <br />
+      <br />
+      Douglas Kelley, wildfire scientist at the UK Centre for Ecology and
+      Hydrology, says that while overall burnt area is shrinking, the size and
+      intensity of the largest fires are increasing.
+      <br />
+      <br />
+      "We're seeing fewer small burns but more extreme events," he says.
+      <br />
+      <br />
+      Gareth Clay, professor of geography at the University of Manchester,
+      adds that burnt area alone misses the full story. A small fire may not
+      cover much ground, but it can still close roads, choke valleys with
+      smoke, or threaten homes. These local impacts don't always show up in
+      national statistics.
+    </div>
+    <div class="charts" id="1">
+      <div class="chart-title">
+        Burnt Area in the United Kingdom (2015 - 2025)
+      </div>
+      <!-- <div class="chart-subtitle"></div> -->
+      <div id="totalburnedarea_chart"></div>
+    </div>
+    <div class="source-text">
+      <p>
+        Note: As of 1 July 2025. EFFIS only maps fires that are approximately
+        30ha or larger. <br />
+        Source: European Forest Fire Information System (<a href="https://forest-fire.emergency.copernicus.eu"
+          target="_blank">EFFIS</a>)
+      </p>
+    </div>
+    <br />
+    <div class="para">
+      Experts also stress that fire behaviour depends on the land’s history.
+      <br />
+      <br />
+      Several years of plant growth may build up enough fuel for an intense
+      blaze, while human actions such as land management or suppression
+      efforts can change how fires spread. Clay says this is why weather
+      patterns and burnt area don’t always match.
+      <br />
+      <br />
+      These patterns of fire and fuel are tied to wider changes in weather.
+      And in Wales, those changes are coming in sharp swings.
+      <br />
+      <br />
+      Scientists are paying close attention to swings in weather from one year
+      to the next. They call this "climate whiplash".
+    </div>
+  </div>
+  <!-- <div class="para">
         
       </div> -->
 
-    <!-- climate whiplash  -->
+  <!-- climate whiplash  -->
 
-    <section id="scroll-2">
-      <div class="sticky-container">
-        <div class="scroll-header">
-          <div class="sub">What is the 'climate whiplash' effect?</div>
-        </div>
-        <div class="scroll-graphic-2">
-          <div class="image-container-2">
-            <div class="charts" id="3">
-              <div id="anomalieschart"></div>
-            </div>
+  <section id="scroll-2">
+    <div class="sticky-container">
+      <div class="scroll-header">
+        <div class="sub">What is the 'climate whiplash' effect?</div>
+      </div>
+      <div class="scroll-graphic-2">
+        <div class="image-container-2">
+          <div class="charts" id="3">
+            <div id="anomalieschart"></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="scroll-text-2">
-        <div class="step-2" data-step="1">
-          <p>
-            This chart shows how each year’s weather was different from the
-            usual in Wales.<br />
-            <br />
-            The 'usual' here is called the climate normal.
-            <br />
-            <br />
-            A climate normal is the 30-year average weather that scientists use
-            as a baseline for comparing any single year. This gets updated every
-            decade.
-          </p>
-        </div>
-        <div class="step-2" data-step="2">
-          <p>
-            The most recent climate normal is 1991-2020, which these lines
-            represent.
-          </p>
-        </div>
-        <div class="step-2" data-step="3">
-          <p>
-            Every dot is one year. Left means drier than usual, right means
-            wetter. Down means cooler, up means hotter.
-          </p>
-        </div>
-        <div class="step-2" data-step="4">
-          <p>
-            The chart splits into four quadrants:
-            <span style="background-color: rgba(255, 0, 0, 0.232)">
-              hot and dry </span
-            >,
-            <span style="background-color: rgba(0, 89, 255, 0.232)">
-              hot and wet </span
-            >,
-            <span style="background-color: rgba(255, 255, 0, 0.232)">
-              cool and dry</span
-            >,
-            <span style="background-color: rgba(0, 255, 60, 0.232)">
-              cool and wet</span
-            >.
-          </p>
-        </div>
-        <div class="step-2" data-step="5">
-          <p>As the years go by, the weather jumps around these boxes.</p>
-        </div>
-        <div class="step-2" data-step="6">
-          <p>
-            Sometimes the jumps are small and smooth. <br />
-            <br />
-            Like 1913 to 1914. Both years were relatively cool and dry, compared
-            to the modern normal.
-          </p>
-        </div>
-        <div class="step-2" data-step="7">
-          <p>
-            Other times they are sudden. <br />
-            <br />
-            Here the weather flipped from hot and dry in 2011 to cool and wet in
-            2012.
-          </p>
-        </div>
-        <div class="step-2" data-step="8">
-          <p>
-            These sudden and long jumps are becoming more frequent and severe.
-            <br />
-            <br />
-            Each of these years had severe weather events in Wales and the UK.
-          </p>
-        </div>
-        <div class="step-2" data-step="9">
-          <p>
-            Scientists call these jumps 'climate whiplash'. <br />
-            <br />Swinging from two extremes is making life harder because
-            people, farms, and cities have little time to recover.
-          </p>
-        </div>
-      </div>
-    </section>
-    <script>
-      const scroller2 = scrollama();
-
-      function updateAnomalies(step) {
-        d3.select(".topleft").transition().style("opacity", 0);
-        d3.select(".topright").transition().style("opacity", 0);
-        d3.select(".bottomleft").transition().style("opacity", 0);
-        d3.select(".bottomright").transition().style("opacity", 0);
-        d3.select(".l2011").transition().style("opacity", 0);
-        d3.select(".l2012").transition().style("opacity", 0);
-        d3.select(".l2018").transition().style("opacity", 0);
-        d3.select(".l2019").transition().style("opacity", 0);
-        d3.select(".l2021").transition().style("opacity", 0);
-        d3.select(".l2022").transition().style("opacity", 0);
-        d3.select(".l2024").transition().style("opacity", 0);
-        d3.select(".l2025").transition().style("opacity", 0);
-        d3.select(".l1913").transition().style("opacity", 0);
-        d3.select(".l1914").transition().style("opacity", 0);
-        d3.select(".l2023").transition().style("opacity", 0);
-        d3.select(".l2020").transition().style("opacity", 0);
-
-        switch (step) {
-          case 0:
-            // start with axes
-            d3.select(".x-axis").transition().style("opacity", 1);
-            d3.select(".y-axis").transition().style("opacity", 1);
-            d3.select(".xlabel").transition().style("opacity", 1);
-            d3.select(".ylabel").transition().style("opacity", 1);
-
-            break;
-
-          case 1:
-            // ref lines
-            d3.select(".v_line").transition().style("opacity", 1);
-            d3.select(".h_line").transition().style("opacity", 1);
-            d3.select(".averagelabel").transition().style("opacity", 0.2);
-
-            break;
-
-          case 2:
-            // dots!!
-            d3.selectAll(".dot").transition().style("opacity", 1);
-            d3.select(".xlabel1").transition().style("opacity", 1);
-            d3.select(".ylabel1").transition().style("opacity", 1);
-            break;
-
-          case 3:
-            // colour quadrants
-            d3.select(".topleft").transition().style("opacity", 0.2);
-            d3.select(".topright").transition().style("opacity", 0.2);
-            d3.select(".bottomleft").transition().style("opacity", 0.2);
-            d3.select(".bottomright").transition().style("opacity", 0.2);
-            break;
-
-          case 4:
-            // remove colours
-            d3.select(".topleft").transition().style("opacity", 0);
-            d3.select(".topright").transition().style("opacity", 0);
-            d3.select(".bottomleft").transition().style("opacity", 0);
-            d3.select(".bottomright").transition().style("opacity", 0);
-            d3.selectAll(".dot")
-              .transition()
-              .attr("fill", "gray")
-              .attr("r", 3)
-              .attr("fill-opacity", 1)
-              .style("opacity", 1);
-            break;
-
-          case 5:
-            // 1913 and 1914
-            const highlightYears1 = [1913, 1914];
-
-            d3.selectAll(".dot")
-              .transition()
-              .duration(600)
-              .attr("fill", (d) =>
-                highlightYears1.includes(d.year) ? "#df0808" : "gray"
-              )
-              .attr("r", (d) => (highlightYears1.includes(d.year) ? 4 : 3))
-              .attr("fill-opacity", (d) =>
-                highlightYears1.includes(d.year) ? "1" : "0.2"
-              );
-
-            d3.select(".l1913").transition().style("opacity", 1);
-            d3.select(".l1914").transition().style("opacity", 1);
-            break;
-
-          case 6:
-            // 2011 and 2012
-            const highlightYears2 = [2011, 2012];
-
-            d3.selectAll(".dot")
-              .transition()
-              .duration(600)
-              .attr("fill", (d) =>
-                highlightYears2.includes(d.year) ? "#df0808" : "gray"
-              )
-              .attr("r", (d) => (highlightYears2.includes(d.year) ? 4 : 3))
-              .attr("fill-opacity", (d) =>
-                highlightYears2.includes(d.year) ? "1" : "0.2"
-              );
-
-            d3.select(".l2011").transition().style("opacity", 1);
-            d3.select(".l2012").transition().style("opacity", 1);
-
-            d3.select(".l1913").transition().style("opacity", 0);
-            d3.select(".l1914").transition().style("opacity", 0);
-            break;
-
-          case 7:
-            // recent year s
-            const highlightYears3 = [2022, 2023];
-            const highlightYears4 = [2018, 2019];
-            const highlightYears5 = [2024, 2025];
-            const highlightYears6 = [2021, 2020];
-
-            d3.selectAll(".dot")
-              .transition()
-              .duration(600)
-              .attr("fill", (d) => {
-                if (highlightYears3.includes(d.year)) return "red";
-                if (highlightYears4.includes(d.year)) return "green";
-                if (highlightYears5.includes(d.year)) return "blue";
-                if (highlightYears6.includes(d.year)) return "yellow";
-                return "gray";
-              })
-              .attr("r", (d) => {
-                if (
-                  highlightYears3.includes(d.year) ||
-                  highlightYears4.includes(d.year) ||
-                  highlightYears5.includes(d.year) ||
-                  highlightYears6.includes(d.year)
-                )
-                  return 4;
-                return 3;
-              })
-
-              .attr("fill-opacity", (d) => {
-                if (
-                  highlightYears3.includes(d.year) ||
-                  highlightYears4.includes(d.year) ||
-                  highlightYears5.includes(d.year) ||
-                  highlightYears6.includes(d.year)
-                )
-                  return 1;
-                return 0.2;
-              });
-
-            d3.select(".l2018").transition().style("opacity", 1);
-            d3.select(".l2019").transition().style("opacity", 1);
-            d3.select(".l2021").transition().style("opacity", 1);
-            d3.select(".l2022").transition().style("opacity", 1);
-            d3.select(".l2024").transition().style("opacity", 1);
-            d3.select(".l2025").transition().style("opacity", 1);
-            d3.select(".l2023").transition().style("opacity", 1);
-            d3.select(".l2020").transition().style("opacity", 1);
-
-            d3.select(".l2011").transition().style("opacity", 0);
-            d3.select(".l2012").transition().style("opacity", 0);
-            break;
-
-          case 8:
-            // back to grey dots
-            d3.selectAll(".dot")
-              .transition()
-              .attr("fill", "gray")
-              .attr("r", 3)
-              .attr("fill-opacity", 1)
-              .style("opacity", 1);
-
-            d3.select(".l2018").transition().style("opacity", 0);
-            d3.select(".l2019").transition().style("opacity", 0);
-            d3.select(".l2021").transition().style("opacity", 0);
-            d3.select(".l2022").transition().style("opacity", 0);
-            d3.select(".l2024").transition().style("opacity", 0);
-            d3.select(".l2025").transition().style("opacity", 0);
-            d3.select(".l2023").transition().style("opacity", 0);
-            d3.select(".l2020").transition().style("opacity", 0);
-            break;
-        }
-      }
-
-      // zooming in
-      function zoom2(step) {
-        const image2 = d3.select(".image-container-2");
-
-        let transform;
-        switch (step) {
-          case 5:
-            transform = "scale(3.5) translate(-10px, 0px)";
-            break;
-          case 6:
-            transform = "scale(3) translate(-20px, 50px)";
-            break;
-          case 7:
-            transform = "scale(3) translate(-20px, 120px)";
-            break;
-          case 8:
-            transform = "scale(1) translate(0px, 0px)";
-            break;
-          default:
-            transform = "scale(1) translate(0px, 0px)";
-        }
-        image2.style("transform", transform);
-      }
-      function init2() {
-        const steps2 = d3.selectAll("#scroll-2 .step-2");
-
-        scroller2
-          .setup({
-            step: "#scroll-2 .step-2",
-            offset: 0.5,
-            debug: false,
-          })
-          .onStepEnter((response) => {
-            steps2.classed("is-active", (d, i) => i === response.index);
-            zoom2(response.index);
-            updateAnomalies(response.index);
-          });
-
-        window.addEventListener("resize", scroller2.resize);
-      }
-
-      // kick it off
-      init2();
-    </script>
-
-    <div class="main-article">
-      <div class="source-text">
+    <div class="scroll-text-2">
+      <div class="step-2" data-step="1">
         <p>
-          Note: As of 1 August 2025. All values are compared to the 1991–2020
-          average. Negative anomalies before 1991 indicate years cooler than the
-          modern normal. <br />Source: Met Office National Climate Information
-          Centre (<a
-            href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
-            target="_blank"
-            >Climate Data</a
-          >)
+          This chart shows how each year’s weather was different from the
+          usual in Wales.<br />
+          <br />
+          The 'usual' here is called the climate normal.
+          <br />
+          <br />
+          A climate normal is the 30-year average weather that scientists use
+          as a baseline for comparing any single year. This gets updated every
+          decade.
         </p>
       </div>
-      <div class="para">
-        Scientists believe that climate change is making these swings more
-        extreme.
-        <br />
-        <br />
-        Wales saw this pattern clearly. 2024 was one of the wettest years on
-        record, but 2025 brought the driest spring with multiple heatwaves.
-        <br />
-        <br />
-        Clay points out that such conditions are part of a longer cycle. It can
-        take years of vegetation build up to produce the fuel needed for a major
-        fire.
-        <br />
-        <br />
-        Climate change is speeding up this cycle, creating a constant see-saw
-        between fuel build-up and fire.
-        <br />
-        <br />
-        But weather alone is not enough for a fire to ignite.
-      </div>
-      <div class="sub">What's igniting all these fires?</div>
-      <div class="para">
-        Climate change is making Wales more fire-prone, but it is not usually
-        the spark.
-        <br />
-        <br />
-        "Nearly all of our ignitions are from humans in some way, shape or
-        form," says Clay.
-        <br />
-        <br />
-        Whether it is accidental, reckless, linked to land management, or in
-        some cases, deliberate arson, human activity is behind most ignitions,
-        he explains.
-        <br />
-        <br />
-        In parts of South Wales, which sees more than 50% of all fires in the
-        country, antisocial behaviour has been linked to repeated blazes in a
-        2011 study.
-        <br />
-        <br />
-        Kelley adds that while indigenous groups in other parts of the world use
-        fire carefully as a land-management tool, the UK has not developed the
-        same traditions.
-      </div>
-
-      <div class="sub">Recovery in a fragile environment.</div>
-      <img
-        id="photo"
-        src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/photo.jpg"
-        alt="A fire in Y Fron in 2018"
-      />
-      <div class="source-text">
+      <div class="step-2" data-step="2">
         <p>
-          A fire in Y Fron in 2018<br />
-          Credit: Neil Mark Thomas. Free to use under the Unsplash License
+          The most recent climate normal is 1991-2020, which these lines
+          represent.
         </p>
       </div>
-      <div class="para">
-        Wales is already one of the most nature-depleted countries in the world.
-        And recovery can get tricky.
-        <br />
-        <br />
-        Shifts in fire frequency and intensity can trigger long-term ecological
-        change. Some plants and animals may disappear if fires happen too often
-        or too severely. Invasive species often return quickly, sometimes taking
-        over and creating a more fire-prone environment.
-        <br />
-        <br />
-        For example, Bracken, a common fern across the UK, is invasive and
-        easily catches fire, spreading rapidly.
-        <br />
-        <br />
-        Clay says that after most fires, land is left to recover on its own,
-        with little active intervention. Only the most severe burns get specific
-        restoration efforts.
-        <br />
-        <br />
-        McNorton notes that indigenous fire practices around the world show that
-        careful, controlled burning can help manage landscapes for resilience.
-        Yet in Wales, the recovery of ecosystems remains unpredictable.
-        <br />
-        <br />
-        As the climate continues to shift, the challenge will be learning how to
-        live with fire. "The challenge ahead is integrating fire science, data,
-        and local knowledge to improve prediction, management, and
-        prevention—this is vital as wildfires become a more frequent reality."
-        says Clay.
-        <br />
-        <br />The landscapes of Wales are at a crossroads: the resilience of its
-        ecosystems will determine whether fire becomes a natural part of
-        regeneration or a lasting ecological threat.
-      </div>
-      <div class="source-text">
+      <div class="step-2" data-step="3">
         <p>
-          Satellite images of Wales on March 19, April 5, and May 15 were taken
-          from the
-          <a
-            href="https://browser.dataspace.copernicus.eu/?zoom=5&lat=50.16282&lng=20.78613&themeId=DEFAULT-THEME&visualizationUrl=U2FsdGVkX19ofRKRE6jwtFRgGsQ2b8XL7BUyF7OCulx3ofOLajJDgSSjSaDyqYzLjptNdBWo%2FVXJWkphe593B3eVnT2T9NNMGZIaLnLf59aA08WkOQV6IlOU%2FhdFXF79&datasetId=S2_L2A_CDAS&demSource3D=%22MAPZEN%22&cloudCoverage=30&dateMode=SINGLE"
-            target="_blank"
-            >Copernicus Data Space Ecosystem Browser</a
-          >
+          Every dot is one year. Left means drier than usual, right means
+          wetter. Down means cooler, up means hotter.
+        </p>
+      </div>
+      <div class="step-2" data-step="4">
+        <p>
+          The chart splits into four quadrants:
+          <span style="background-color: rgba(255, 0, 0, 0.232)">
+            hot and dry </span>,
+          <span style="background-color: rgba(0, 89, 255, 0.232)">
+            hot and wet </span>,
+          <span style="background-color: rgba(255, 255, 0, 0.232)">
+            cool and dry</span>,
+          <span style="background-color: rgba(0, 255, 60, 0.232)">
+            cool and wet</span>.
+        </p>
+      </div>
+      <div class="step-2" data-step="5">
+        <p>As the years go by, the weather jumps around these boxes.</p>
+      </div>
+      <div class="step-2" data-step="6">
+        <p>
+          Sometimes the jumps are small and smooth. <br />
+          <br />
+          Like 1913 to 1914. Both years were relatively cool and dry, compared
+          to the modern normal.
+        </p>
+      </div>
+      <div class="step-2" data-step="7">
+        <p>
+          Other times they are sudden. <br />
+          <br />
+          Here the weather flipped from hot and dry in 2011 to cool and wet in
+          2012.
+        </p>
+      </div>
+      <div class="step-2" data-step="8">
+        <p>
+          These sudden and long jumps are becoming more frequent and severe.
+          <br />
+          <br />
+          Each of these years had severe weather events in Wales and the UK.
+        </p>
+      </div>
+      <div class="step-2" data-step="9">
+        <p>
+          Scientists call these jumps 'climate whiplash'. <br />
+          <br />Swinging from two extremes is making life harder because
+          people, farms, and cities have little time to recover.
         </p>
       </div>
     </div>
+  </section>
+  <script>
+    const scroller2 = scrollama();
 
-    <script src="scripts/totalburnedarea.js"></script>
-    <script src="scripts/anomalies2025.js"></script>
-    <script src="scripts/firespermonth_wales.js"></script>
-  </body>
+    function updateAnomalies(step) {
+      d3.select(".topleft").transition().style("opacity", 0);
+      d3.select(".topright").transition().style("opacity", 0);
+      d3.select(".bottomleft").transition().style("opacity", 0);
+      d3.select(".bottomright").transition().style("opacity", 0);
+      d3.select(".l2011").transition().style("opacity", 0);
+      d3.select(".l2012").transition().style("opacity", 0);
+      d3.select(".l2018").transition().style("opacity", 0);
+      d3.select(".l2019").transition().style("opacity", 0);
+      d3.select(".l2021").transition().style("opacity", 0);
+      d3.select(".l2022").transition().style("opacity", 0);
+      d3.select(".l2024").transition().style("opacity", 0);
+      d3.select(".l2025").transition().style("opacity", 0);
+      d3.select(".l1913").transition().style("opacity", 0);
+      d3.select(".l1914").transition().style("opacity", 0);
+      d3.select(".l2023").transition().style("opacity", 0);
+      d3.select(".l2020").transition().style("opacity", 0);
+
+      switch (step) {
+        case 0:
+          // start with axes
+          d3.select(".x-axis").transition().style("opacity", 1);
+          d3.select(".y-axis").transition().style("opacity", 1);
+          d3.select(".xlabel").transition().style("opacity", 1);
+          d3.select(".ylabel").transition().style("opacity", 1);
+
+          break;
+
+        case 1:
+          // ref lines
+          d3.select(".v_line").transition().style("opacity", 1);
+          d3.select(".h_line").transition().style("opacity", 1);
+          d3.select(".averagelabel").transition().style("opacity", 0.2);
+
+          break;
+
+        case 2:
+          // dots!!
+          d3.selectAll(".dot").transition().style("opacity", 1);
+          d3.select(".xlabel1").transition().style("opacity", 1);
+          d3.select(".ylabel1").transition().style("opacity", 1);
+          break;
+
+        case 3:
+          // colour quadrants
+          d3.select(".topleft").transition().style("opacity", 0.2);
+          d3.select(".topright").transition().style("opacity", 0.2);
+          d3.select(".bottomleft").transition().style("opacity", 0.2);
+          d3.select(".bottomright").transition().style("opacity", 0.2);
+          break;
+
+        case 4:
+          // remove colours
+          d3.select(".topleft").transition().style("opacity", 0);
+          d3.select(".topright").transition().style("opacity", 0);
+          d3.select(".bottomleft").transition().style("opacity", 0);
+          d3.select(".bottomright").transition().style("opacity", 0);
+          d3.selectAll(".dot")
+            .transition()
+            .attr("fill", "gray")
+            .attr("r", 3)
+            .attr("fill-opacity", 1)
+            .style("opacity", 1);
+          break;
+
+        case 5:
+          // 1913 and 1914
+          const highlightYears1 = [1913, 1914];
+
+          d3.selectAll(".dot")
+            .transition()
+            .duration(600)
+            .attr("fill", (d) =>
+              highlightYears1.includes(d.year) ? "#df0808" : "gray"
+            )
+            .attr("r", (d) => (highlightYears1.includes(d.year) ? 4 : 3))
+            .attr("fill-opacity", (d) =>
+              highlightYears1.includes(d.year) ? "1" : "0.2"
+            );
+
+          d3.select(".l1913").transition().style("opacity", 1);
+          d3.select(".l1914").transition().style("opacity", 1);
+          break;
+
+        case 6:
+          // 2011 and 2012
+          const highlightYears2 = [2011, 2012];
+
+          d3.selectAll(".dot")
+            .transition()
+            .duration(600)
+            .attr("fill", (d) =>
+              highlightYears2.includes(d.year) ? "#df0808" : "gray"
+            )
+            .attr("r", (d) => (highlightYears2.includes(d.year) ? 4 : 3))
+            .attr("fill-opacity", (d) =>
+              highlightYears2.includes(d.year) ? "1" : "0.2"
+            );
+
+          d3.select(".l2011").transition().style("opacity", 1);
+          d3.select(".l2012").transition().style("opacity", 1);
+
+          d3.select(".l1913").transition().style("opacity", 0);
+          d3.select(".l1914").transition().style("opacity", 0);
+          break;
+
+        case 7:
+          // recent year s
+          const highlightYears3 = [2022, 2023];
+          const highlightYears4 = [2018, 2019];
+          const highlightYears5 = [2024, 2025];
+          const highlightYears6 = [2021, 2020];
+
+          d3.selectAll(".dot")
+            .transition()
+            .duration(600)
+            .attr("fill", (d) => {
+              if (highlightYears3.includes(d.year)) return "red";
+              if (highlightYears4.includes(d.year)) return "green";
+              if (highlightYears5.includes(d.year)) return "blue";
+              if (highlightYears6.includes(d.year)) return "yellow";
+              return "gray";
+            })
+            .attr("r", (d) => {
+              if (
+                highlightYears3.includes(d.year) ||
+                highlightYears4.includes(d.year) ||
+                highlightYears5.includes(d.year) ||
+                highlightYears6.includes(d.year)
+              )
+                return 4;
+              return 3;
+            })
+
+            .attr("fill-opacity", (d) => {
+              if (
+                highlightYears3.includes(d.year) ||
+                highlightYears4.includes(d.year) ||
+                highlightYears5.includes(d.year) ||
+                highlightYears6.includes(d.year)
+              )
+                return 1;
+              return 0.2;
+            });
+
+          d3.select(".l2018").transition().style("opacity", 1);
+          d3.select(".l2019").transition().style("opacity", 1);
+          d3.select(".l2021").transition().style("opacity", 1);
+          d3.select(".l2022").transition().style("opacity", 1);
+          d3.select(".l2024").transition().style("opacity", 1);
+          d3.select(".l2025").transition().style("opacity", 1);
+          d3.select(".l2023").transition().style("opacity", 1);
+          d3.select(".l2020").transition().style("opacity", 1);
+
+          d3.select(".l2011").transition().style("opacity", 0);
+          d3.select(".l2012").transition().style("opacity", 0);
+          break;
+
+        case 8:
+          // back to grey dots
+          d3.selectAll(".dot")
+            .transition()
+            .attr("fill", "gray")
+            .attr("r", 3)
+            .attr("fill-opacity", 1)
+            .style("opacity", 1);
+
+          d3.select(".l2018").transition().style("opacity", 0);
+          d3.select(".l2019").transition().style("opacity", 0);
+          d3.select(".l2021").transition().style("opacity", 0);
+          d3.select(".l2022").transition().style("opacity", 0);
+          d3.select(".l2024").transition().style("opacity", 0);
+          d3.select(".l2025").transition().style("opacity", 0);
+          d3.select(".l2023").transition().style("opacity", 0);
+          d3.select(".l2020").transition().style("opacity", 0);
+          break;
+      }
+    }
+
+    // zooming in
+    function zoom2(step) {
+      const image2 = d3.select(".image-container-2");
+
+      let transform;
+      switch (step) {
+        case 5:
+          transform = "scale(3.5) translate(-10px, 0px)";
+          break;
+        case 6:
+          transform = "scale(3) translate(-20px, 50px)";
+          break;
+        case 7:
+          transform = "scale(3) translate(-20px, 120px)";
+          break;
+        case 8:
+          transform = "scale(1) translate(0px, 0px)";
+          break;
+        default:
+          transform = "scale(1) translate(0px, 0px)";
+      }
+      image2.style("transform", transform);
+    }
+    function init2() {
+      const steps2 = d3.selectAll("#scroll-2 .step-2");
+
+      scroller2
+        .setup({
+          step: "#scroll-2 .step-2",
+          offset: 0.5,
+          debug: false,
+        })
+        .onStepEnter((response) => {
+          steps2.classed("is-active", (d, i) => i === response.index);
+          zoom2(response.index);
+          updateAnomalies(response.index);
+        });
+
+      window.addEventListener("resize", scroller2.resize);
+    }
+
+    // kick it off
+    init2();
+  </script>
+
+  <div class="main-article">
+    <div class="source-text">
+      <p>
+        Note: As of 1 August 2025. All values are compared to the 1991–2020
+        average. Negative anomalies before 1991 indicate years cooler than the
+        modern normal. <br />Source: Met Office National Climate Information
+        Centre (<a href="https://www.metoffice.gov.uk/research/climate/maps-and-data/uk-and-regional-series"
+          target="_blank">Climate Data</a>)
+      </p>
+    </div>
+    <div class="para">
+      Scientists believe that climate change is making these swings more
+      extreme.
+      <br />
+      <br />
+      Wales saw this pattern clearly. 2024 was one of the wettest years on
+      record, but 2025 brought the driest spring with multiple heatwaves.
+      <br />
+      <br />
+      Clay points out that such conditions are part of a longer cycle. It can
+      take years of vegetation build up to produce the fuel needed for a major
+      fire.
+      <br />
+      <br />
+      Climate change is speeding up this cycle, creating a constant see-saw
+      between fuel build-up and fire.
+      <br />
+      <br />
+      But weather alone is not enough for a fire to ignite.
+    </div>
+    <div class="sub">What's igniting all these fires?</div>
+    <div class="para">
+      Climate change is making Wales more fire-prone, but it is not usually
+      the spark.
+      <br />
+      <br />
+      "Nearly all of our ignitions are from humans in some way, shape or
+      form," says Clay.
+      <br />
+      <br />
+      Whether it is accidental, reckless, linked to land management, or in
+      some cases, deliberate arson, human activity is behind most ignitions,
+      he explains.
+      <br />
+      <br />
+      In parts of South Wales, which sees more than 50% of all fires in the
+      country, antisocial behaviour has been linked to repeated blazes in a
+      2011 study.
+      <br />
+      <br />
+      Kelley adds that while indigenous groups in other parts of the world use
+      fire carefully as a land-management tool, the UK has not developed the
+      same traditions.
+    </div>
+
+    <div class="sub">Recovery in a fragile environment.</div>
+    <img id="photo"
+      src="https://media.githubusercontent.com/media/ratnarekham/wildfire-scroller/refs/heads/main/images/photo.jpg"
+      alt="A fire in Y Fron in 2018" />
+    <div class="source-text">
+      <p>
+        A fire in Y Fron in 2018<br />
+        Credit: Neil Mark Thomas. Free to use under the Unsplash License
+      </p>
+    </div>
+    <div class="para">
+      Wales is already one of the most nature-depleted countries in the world.
+      And recovery can get tricky.
+      <br />
+      <br />
+      Shifts in fire frequency and intensity can trigger long-term ecological
+      change. Some plants and animals may disappear if fires happen too often
+      or too severely. Invasive species often return quickly, sometimes taking
+      over and creating a more fire-prone environment.
+      <br />
+      <br />
+      For example, Bracken, a common fern across the UK, is invasive and
+      easily catches fire, spreading rapidly.
+      <br />
+      <br />
+      Clay says that after most fires, land is left to recover on its own,
+      with little active intervention. Only the most severe burns get specific
+      restoration efforts.
+      <br />
+      <br />
+      McNorton notes that indigenous fire practices around the world show that
+      careful, controlled burning can help manage landscapes for resilience.
+      Yet in Wales, the recovery of ecosystems remains unpredictable.
+      <br />
+      <br />
+      As the climate continues to shift, the challenge will be learning how to
+      live with fire. "The challenge ahead is integrating fire science, data,
+      and local knowledge to improve prediction, management, and
+      prevention—this is vital as wildfires become a more frequent reality."
+      says Clay.
+      <br />
+      <br />The landscapes of Wales are at a crossroads: the resilience of its
+      ecosystems will determine whether fire becomes a natural part of
+      regeneration or a lasting ecological threat.
+    </div>
+    <div class="source-text">
+      <p>
+        Satellite images of Wales on March 19, April 5, and May 15 were taken
+        from the
+        <a href="https://browser.dataspace.copernicus.eu/?zoom=5&lat=50.16282&lng=20.78613&themeId=DEFAULT-THEME&visualizationUrl=U2FsdGVkX19ofRKRE6jwtFRgGsQ2b8XL7BUyF7OCulx3ofOLajJDgSSjSaDyqYzLjptNdBWo%2FVXJWkphe593B3eVnT2T9NNMGZIaLnLf59aA08WkOQV6IlOU%2FhdFXF79&datasetId=S2_L2A_CDAS&demSource3D=%22MAPZEN%22&cloudCoverage=30&dateMode=SINGLE"
+          target="_blank">Copernicus Data Space Ecosystem Browser</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="scripts/totalburnedarea.js"></script>
+  <script src="scripts/anomalies2025.js"></script>
+  <script src="scripts/firespermonth_wales.js"></script>
+</body>
+
 </html>
